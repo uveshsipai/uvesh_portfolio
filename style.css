@@ -51,7 +51,7 @@ body {
 .navbar-logo {
     display: flex;
     align-items: center;
-	width: 137;
+    width: 137;
     height: 58px;
 }
 
@@ -215,7 +215,7 @@ body {
     color: #343434;
     position: relative;
     padding-bottom: 1rem; /* pb-4 */
-	margin-top:0rem
+    margin-top:0rem
 }
 
 .section-title::after {
@@ -424,14 +424,14 @@ body {
     font-size: 1.5rem; /* text-2xl */
     font-weight: 700; /* font-bold */
     color: #343434;
-	margin-top: 0; /* ADD THIS LINE */
+    margin-top: 0; /* Ensures no extra top margin from browser defaults */
     margin-bottom: 0.5rem; /* mb-2 */
 }
 
 .card-subtitle {
     color: #A00C30;
     font-size: 1.125rem; /* text-lg */
-	margin-top: 0; /* ADD THIS LINE */
+    margin-top: 0; /* Ensures no extra top margin from browser defaults */
     margin-bottom: 0.5rem; /* mb-2 */
 }
 
@@ -443,6 +443,7 @@ body {
 
 .card-description {
     color: #343434;
+    font-size: 1rem; /* Explicitly set font size */
 }
 
 /* Research & Participation Sections (nested structure) */
@@ -501,7 +502,7 @@ body {
     font-size: 1.5rem; /* text-2xl */
     font-weight: 600; /* font-semibold */
     color: #343434;
-	margin-top: 0; /* ADD THIS LINE */
+    margin-top: 0; /* Ensures no extra top margin from browser defaults */
     margin-bottom: 1rem; /* mb-4 */
 }
 
@@ -515,13 +516,13 @@ body {
     margin-bottom: 0.75rem; /* space-y-3 */
     color: #343434;
 }
-.decimal-list li:last-child {
-    margin-bottom: 0;
-}
-
 .decimal-list li p {
     margin: 0; /* Remove default paragraph margin */
     display: inline; /* Keep text on same line as list number */
+    font-size: 1rem; /* Explicitly set font size */
+}
+.decimal-list li:last-child {
+    margin-bottom: 0;
 }
 
 
