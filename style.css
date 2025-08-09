@@ -51,7 +51,7 @@ body {
 .navbar-logo {
     display: flex;
     align-items: center;
-    width: 137;
+    width: 137px; /* Explicitly set width to fix potential '137' issue */
     height: 58px;
 }
 
@@ -409,6 +409,8 @@ body {
     transition-property: box-shadow;
     transition-duration: 300ms; /* transition-shadow duration-300 */
     border: 1px solid #f3f4f6; /* border border-gray-100 */
+    width: 100%; /* Ensure all these cards explicitly take full width */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
 }
 
 .experience-card:hover,
@@ -478,6 +480,7 @@ body {
 
 @media (min-width: 768px) {
     /* Removed flex-direction: row; from here to ensure stacking on larger screens */
+    /* This media query block is now effectively empty for .card-container's flex-direction */
 }
 
 
@@ -491,11 +494,8 @@ body {
 }
 
 @media (min-width: 768px) {
-    .content-card {
-        flex: 1; /* Allow cards to grow and shrink */
-        min-width: calc(33.333% - 1.5rem); /* Roughly 3 columns with gap */
-        max-width: calc(100% - 1.5rem);
-    }
+    /* REMOVED: flex: 1; min-width: calc(33.333% - 1.5rem); max-width: calc(100% - 1.5rem); */
+    /* This ensures content-card always takes full width and stacks, like other cards */
 }
 
 .card-sub-title {
