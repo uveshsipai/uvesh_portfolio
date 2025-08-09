@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Uvesh Sipai</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="Material/U_Pin-01.png" type="image/png">
+    <!-- Lucide Icons (similar to what was used in React) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Initialize Lucide Icons globally
+      // It's crucial to call this before any icon manipulation in script.js
+      document.addEventListener('DOMContentLoaded', function() {
+        lucide.createIcons();
+      });
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <img src="Material/U_Logo-01.png" alt="Personal Logo" class="logo-img">
+            </div>
+
+            <!-- Menu Button (Desktop & Mobile) -->
+            <div class="navbar-menu-wrapper">
+                <button class="menu-toggle" aria-label="Toggle Navigation">
+                    <i data-lucide="menu" class="menu-icon"></i>
+                    <i data-lucide="x" class="close-icon hidden"></i>
+                    <span class="menu-text">Menu</span>
+                </button>
+
+                <!-- Dropdown Menu Content -->
+                <div class="dropdown-menu hidden">
+                    <a href="#home" class="nav-item home-item" data-section="home">
+                        <i data-lucide="home" class="nav-icon"></i> Home
+                    </a>
+                    <a href="#experience" class="nav-item experience-item" data-section="experience">
+                        <i data-lucide="briefcase" class="nav-icon"></i> Experience
+                    </a>
+                    <a href="#education" class="nav-item education-item" data-section="education">
+                        <i data-lucide="graduation-cap" class="nav-icon"></i> Education
+                    </a>
+                    <a href="#research" class="nav-item research-item" data-section="research">
+                        <i data-lucide="flask-conical" class="nav-icon"></i> Research
+                    </a>
+                    <a href="#awards" class="nav-item awards-item" data-section="awards">
+                        <i data-lucide="award" class="nav-icon"></i> Awards
+                    </a>
+                    <a href="#participation" class="nav-item participation-item" data-section="participation">
+                        <i data-lucide="users" class="nav-icon"></i> Participation
+                    </a>
+                    <a href="#contact" class="nav-item contact-item" data-section="contact">
+                        <i data-lucide="mail" class="nav-icon"></i> Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="home-section">
+            <div class="container home-container">
+                <img src="Material/uvesh_photo.jpg" alt="Your Photo" class="profile-photo">
+                <h1 class="section-title-large">Dr. Uvesh Sipai</h1>
+                <p class="section-subtitle">Assistant Professor, Electrical Engineering</p>
+                <p class="section-text-center">Marwadi University, Rajkot, Gujarat, India</p>
+                <p class="section-description">
+                    Dynamic and dedicated Assistant Professor in Electrical Engineering with over 8 years of academic and research experience. Specialized in power quality, power electronics, motor drives, and IoT-enabled smart systems. Proven track record in guiding UG and PG research projects, securing funded research grants, and contributing to innovative solutions through patents, copyrights, and publications in reputed journals and conferences.
+					Skilled in leveraging artificial intelligence and IoT for problem-solving in electrical engineering applications. Adept at fostering collaborative learning, mentoring future engineers, and driving innovation in academia and industry. Recognized for excellence in teaching, research, and innovation with multiple awards and honours.
+                </p>
+                <!-- Social/Academic Profile Links with labels -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/uveshsipai/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-link">
+                        <i data-lucide="linkedin" class="social-icon"></i>
+                        <span class="social-label">LinkedIn</span>
+                    </a>
+                    <a href="https://scholar.google.co.in/citations?user=WJLUr90AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile" class="social-link">
+                        <i data-lucide="graduation-cap" class="social-icon"></i>
+                        <span class="social-label">Google Scholar</span>
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Uvesh-Sipai-5" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile" class="social-link">
+                        <i data-lucide="microscope" class="social-icon"></i>
+                        <span class="social-label">ResearchGate</span>
+                    </a>
+                    <a href="https://orcid.org/0000-0003-0253-9504" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile" class="social-link">
+                        <i data-lucide="fingerprint" class="social-icon"></i>
+                        <span class="social-label">ORCID</span>
+                    </a>
+                    <a href="https://www.scopus.com/authid/detail.uri?authorId=57200271385" target="_blank" rel="noopener noreferrer" aria-label="Scopus Profile" class="social-link">
+                        <i data-lucide="clipboard-list" class="social-icon"></i>
+                        <span class="social-label">Scopus</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights & Achievements Section -->
+        <section id="highlights" class="section-wrapper">
+            <div class="container">
+                <div class="section-header">
+                    <i data-lucide="trending-up" class="section-header-icon"></i>
+                    <h2 class="section-title">Highlights & Achievements</h2>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <i data-lucide="briefcase" class="stat-icon"></i>
+                        <div class="stat-number" data-target="10" data-suffix="+">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <i data-lucide="book-open" class="stat-icon"></i>
+                        <div class="stat-number" data-target="13">0</div>
+                        <div class="stat-label">Research Papers</div>
+                    </div>
+                    <div class="stat-card">
+                        <i data-lucide="newspaper" class="stat-icon"></i>
+                        <div class="stat-number" data-target="27">0</div>
+                        <div class="stat-label">IPRs</div>
+                    </div>
+                    <div class="stat-card">
+                        <i data-lucide="lightbulb" class="stat-icon"></i>
+                        <div class="stat-number" data-target="5">0</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <i data-lucide="award" class="stat-icon"></i>
+                        <div class="stat-number" data-target="4">0</div>
+                        <div class="stat-label">Awards</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section-wrapper">
+            <div class="container">
+                <div class="section-header">
+                    <i data-lucide="briefcase" class="section-header-icon"></i>
+                    <h2 class="section-title">Experience</h2>
+                </div>
+                <div class="space-y-8">
+                    <div class="experience-card">
+                        <h3 class="card-title">Assistant Professor</h3>
+                        <p class="card-subtitle">Marwadi University, Rajkot, India</p>
+                        <p class="card-duration"><b>July 2016 – Present</b></p>
+                        <p class="card-description">Currently serving as an Assistant Professor at the Department of Electrical Engineering in MarwadiUniversity, Rajkot, since July 01, 2016, I undertake a multifaceted role. Alongside traditional teaching, I implemented an innovative instructional methodologies. I mentor and supervise students in research projects, meticulously evaluating their academic advancements. Additionally, I orchestrate career-enhancing programs and activities, ensuring students' holistic growth. My responsibilities extend to overseeing teaching assistants, contributing to institutional ranking and accreditation efforts, and actively participating in departmental and college-wide initiatives. Furthermore, I diligently support senior faculty members in their administrative duties, ensuring the smooth functioning of academic operations.
+						</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3 class="card-title">Teaching Assistant</h3>
+                        <p class="card-subtitle">Nirma Univesity, Ahmedabad, India</p>
+                        <p class="card-duration"><b>May 2015 – May 2016</b></p>
+                        <p class="card-description">As a Teaching Assistant at Nirma University, Ahmedabad, from May 2015 to May 2016, I provided valuable support to senior professors in administrative tasks, facilitated laboratory sessions, and offered academic assistance to students. My role encompassed fostering a conducive learning environment and ensuring smooth classroom operations.</p>
+                    </div>
+                    <!-- Add more ExperienceCard components as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section-wrapper">
+            <div class="container">
+                <div class="section-header">
+                    <i data-lucide="graduation-cap" class="section-header-icon"></i>
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="space-y-8">
+                    <div class="education-card">
+                        <h3 class="card-title">Doctor of Philosophy (Ph.D.)</h3>
+						<p class="card-description">Electrical Engineering</p>
+                        <p class="card-subtitle">Marwadi University, Rajkot, India</p>
+                        <p class="card-duration"><b>2025</b></p>
+						<p class="card-description">Persuing research work on application of AI for Power Quality Disturbance Detection and Classification at research laboratory of Marwadi University under expert guidance of Prof. (Dr.) R. B. Jadeja. During July 2019 - August 2019 received scholarship for Exchange of PhD Candidates and Academic Staff at Lodz University of Technology, Poland.
+						</p>
+                        
+                    </div>
+                    <div class="education-card">
+                        <h3 class="card-title">Master of Technology (M.Tech.)</h3>
+                        <p class="card-description">Power Electronics, Machine & Drives</p>
+						<p class="card-subtitle">Nirma Univeristy, Ahmedabad, India</p>
+                        <p class="card-duration"><b>2016</b></p>
+                        <p class="card-description">Completed M.Tech in Power Electronics, Machine & Drives with 8.9 CPI (84%). Nirma University had awarded the Gold Medal for securing the first rank with during M.Tech in Power Electronics Machine and Drives. During postgraduation worked on hardware project on 'Implimentation of Close-loop Control of Five-level Neutral-point Clamped Inverter for DC-link Capacitor Voltage Balancing' under expert guidance of Prof. (Dr.) P. N. Tekwani.
+						</p>
+                    </div>
+                    <div class="education-card">
+                        <h3 class="card-title">Batchlore Engineering (B.E.)</h3>
+						<p class="card-description">Electrical Engineering</p>
+                        <p class="card-subtitle">Marwadi Education Foundation's Group of Institutions, Rajkot, India (Gujarat Technological University)</p>
+                        <p class="card-duration">2014</p>
+                        <p class="card-description">Completed B.E. in Electrical Engineering with 9.03 CGPA (85.3%). During graduation worked on many projects with major focus on, Active and Reactive Power Control of Grid Connected Distributed Generation System' under expert guidance of Dr. Priyesh Chauhan.</p>
+                    </div>
+                    <!-- Add more EducationCard components as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section-wrapper">
+            <div class="container">
+                <div class="section-header">
+                    <i data-lucide="flask-conical" class="section-header-icon"></i>
+                    <h2 class="section-title">Research</h2>
+                </div>
+                <div class="space-y-12">
+                    <!-- Publications -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="book-open" class="sub-section-icon"></i> Publications</h3>
+                        <div class="card-container">
+                            <!-- Journal Papers Placeholder -->
+                            <div class="content-card">
+                                <h4 class="card-sub-title">Journal Papers</h4>
+                                <ol class="decimal-list">
+                                    <li><p>[Authors], '[Journal Paper Title 1]', [Journal Name], Vol. X, No. Y, pp. Z-Z, [Year].</p></li>
+                                    <li><p>[Authors], '[Journal Paper Title 2]', [Journal Name], Vol. X, No. Y, pp. Z-Z, [Year].</p></li>
+                                    <!-- Add more Journal Papers as <li> -->
+                                </ol>
+                            </div>
+
+                            <!-- Conference Papers Placeholder -->
+                            <div class="content-card">
+                                <h4 class="card-sub-title">Conference Papers</h4>
+                                <ol class="decimal-list">
+                                    <li><p>[Authors], '[Conference Paper Title 1]', in [Conference Name], [Location], [Year].</p></li>
+                                    <li><p>[Authors], '[Conference Paper Title 2]', in [Conference Name], [Location], [Year].</p></li>
+                                    <!-- Add more Conference Papers as <li> -->
+                                </ol>
+                            </div>
+
+                            <!-- Books/Chapters Placeholder -->
+                            <div class="content-card">
+                                <h4 class="card-sub-title">Books/Book Chapters</h4>
+                                <ol class="decimal-list">
+                                    <li><p class="font-medium">[Book/Chapter Title 1]</p><p class="text-sm">[Authors], [Book Title], Publisher, [Year].</p></li>
+                                    <!-- Add more Books/Chapters as <li> -->
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Projects -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="lightbulb" class="sub-section-icon"></i> Research Projects</h3>
+                        <div class="space-y-4">
+                            <div class="project-item">
+                                <h4 class="card-title">[Project Title 1] <span class="status-badge status-green">[Completed/Ongoing]</span></h4>
+                                <p class="card-description">[Brief description of the project, funding agency, and your role].</p>
+                            </div>
+                            <div class="project-item">
+                                <h4 class="card-title">[Project Title 2] <span class="status-badge status-yellow">[Completed/Ongoing]</span></h4>
+                                <p class="card-description">[Brief description of the project, funding agency, and your role].</p>
+                            </div>
+                            <!-- Add more Research Projects -->
+                        </div>
+                    </div>
+
+                    <!-- IPRs -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="newspaper" class="sub-section-icon"></i> IPRs (Intellectual Property Rights)</h3>
+                        <div class="space-y-6">
+                            <!-- IPRs (Patents) Placeholder -->
+                            <div class="content-card">
+                                <h4 class="card-sub-title">Patents</h4>
+                                <ol class="decimal-list">
+                                    <li><p class="font-medium">Patent: [Patent Title 1]</p><p class="text-sm">Number: [Application/Grant Number], Year: [Year]</p></li>
+                                    <li><p class="font-medium">Patent: [Patent Title 2]</p><p class="text-sm">Number: [Application/Grant Number], Year: [Year]</p></li>
+                                    <!-- Add more Patents as <li> -->
+                                </ol>
+                            </div>
+
+                            <!-- IPRs (Copyrights) Placeholder -->
+                            <div class="content-card">
+                                <h4 class="card-sub-title">Copyrights</h4>
+                                <ol class="decimal-list">
+                                    <li><p class="font-medium">Copyright: [Copyright Title 1]</p><p class="text-sm">Number: [Registration Number], Year: [Year]</p></li>
+                                    <!-- Add more Copyrights as <li> -->
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards/Recognitions Section -->
+        <section id="awards" class="section-wrapper">
+            <div class="container">
+                <div class="section-header">
+                    <i data-lucide="award" class="section-header-icon"></i>
+                    <h2 class="section-title">Awards & Recognitions</h2>
+                </div>
+                <div class="space-y-12">
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="award" class="sub-section-icon"></i> Awards</h3>
+                        <div class="space-y-4">
+                            <div class="award-item">
+                                <i data-lucide="award" class="award-icon-small"></i>
+                                <div>
+                                    <h4 class="card-title">[Award Name 1]</h4>
+                                    <p class="card-description">[Awarding Organization], [Year]</p>
+                                </div>
+                            </div>
+                            <div class="award-item">
+                                <i data-lucide="award" class="award-icon-small"></i>
+                                <div>
+                                    <h4 class="card-title">[Award Name 2]</h4>
+                                    <p class="card-description">[Awarding Organization], [Year]</p>
+                                </div>
+                            </div>
+                            <!-- Add more Awards -->
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="users" class="sub-section-icon"></i> Recognition / Certification</h3>
+                        <div class="space-y-4">
+                            <div class="award-item">
+                                <i data-lucide="award" class="award-icon-small"></i>
+                                <div>
+                                    <h4 class="card-title">[Certification Name 1]</h4>
+                                    <p class="card-description">[Issuing Body], [Year]</p>
+                                </div>
+                            </div>
+                            <div class="award-item">
+                                <i data-lucide="award" class="award-icon-small"></i>
+                                <div>
+                                    <h4 class="card-title">[Recognition/Certification Name 2]</h4>
+                                    <p class="card-description">[Issuing Body], [Year]</p>
+                                </div>
+                            </div>
+                            <!-- Add more Recognitions/Certifications -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Participation Section -->
+        <section id="participation" class="section-wrapper">
+            <div class="container">
+                <div class="section-header">
+                    <i data-lucide="users" class="section-header-icon"></i>
+                    <h2 class="section-title">Participation</h2>
+                </div>
+                <div class="space-y-12">
+                    <!-- FDP/STTP/STC -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="book-open-text" class="sub-section-icon"></i> FDP/STTP/STC</h3>
+                        <div class="content-card">
+                            <ol class="decimal-list">
+                                <li><p>[Program Name 1], Organizer: [Organizing Institution], Duration: [Dates].</p></li>
+                                <li><p>[Program Name 2], Organizer: [Organizing Institution], Duration: [Dates].</p></li>
+                                <!-- Add more FDP/STTP/STC entries as <li> -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Workshop -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="wrench" class="sub-section-icon"></i> Workshop</h3>
+                        <div class="content-card">
+                            <ol class="decimal-list">
+                                <li><p>[Workshop Name 1], Organizer: [Organizing Institution], Duration: [Dates].</p></li>
+                                <!-- Add more Workshop entries as <li> -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Seminar/Webinar -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="mic" class="sub-section-icon"></i> Seminar/Webinar</h3>
+                        <div class="content-card">
+                            <ol class="decimal-list">
+                                <li><p>[Seminar/Webinar Name 1], Organizer: [Organizing Institution], Duration: [Dates].</p></li>
+                                <!-- Add more Seminar/Webinar entries as <li> -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Expert Talk -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="speech" class="sub-section-icon"></i> Expert Talk</h3>
+                        <div class="content-card">
+                            <ol class="decimal-list">
+                                <li><p>[Topic of Talk 1], Organizer: [Inviting Institution], Date: [Date].</p></li>
+                                <!-- Add more Expert Talk entries as <li> -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Industrial Training -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="factory" class="sub-section-icon"></i> Industrial Training</h3>
+                        <div class="content-card">
+                            <ol class="decimal-list">
+                                <li><p>[Training Program Name 1], Company: [Company Name], Duration: [Dates].</p></li>
+                                <!-- Add more Industrial Training entries as <li> -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- MOOC -->
+                    <div>
+                        <h3 class="sub-section-title"><i data-lucide="monitor-dot" class="sub-section-icon"></i> MOOC</h3>
+                        <div class="content-card">
+                            <ol class="decimal-list">
+                                <li><p>[MOOC Title 1], Platform/University: [Platform/University], Completion Date: [Date].</p></li>
+                                <!-- Add more MOOC entries as <li> -->
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		
+		<!-- Contact Section -->
+        <section id="contact" class="section-wrapper">
+            <div class="container">
+                <div class="section-header">
+                    <i data-lucide="mail" class="section-header-icon"></i>
+                    <h2 class="section-title">Contact Me</h2>
+                </div>
+                <div class="text-center">
+                    <p class="contact-text">Feel free to reach out to me via email or phone for collaborations, inquiries, or any academic discussions.</p>
+                    <p class="contact-info">
+                        <i data-lucide="mail" class="contact-icon"></i> 
+                        <a href="mailto:uvesh.sipai@gmail.com" class="contact-link">uvesh.sipai@gmail.com</a>
+                    </p>
+                    <p class="contact-info">
+                        <i data-lucide="phone" class="contact-icon"></i> 
+                        <a href="tel:+919876543210" class="contact-link">+91 98765 43210</a>
+                    </p>
+                    <p class="contact-info">
+                        <i data-lucide="map-pin" class="contact-icon"></i> 
+                        <span class="contact-address-text">Marwadi University, Rajkot, India</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Dr. Uvesh Sipai. All rights reserved.</p>
+            <p class="footer-text-small">Designed with ❤️ using HTML, CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
