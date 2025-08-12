@@ -24,7 +24,7 @@
             <!-- Logo -->
             <div class="navbar-logo">
                 <img src="Material/U_Logo-01.png" alt="Personal Logo" class="logo-img">
-            </div>
+			</div>
 
             <!-- Menu Button (Desktop & Mobile) -->
             <div class="navbar-menu-wrapper">
@@ -39,23 +39,11 @@
                     <a href="#home" class="nav-item home-item" data-section="home">
                         <i data-lucide="home" class="nav-icon"></i> Home
                     </a>
-                    <a href="#experience" class="nav-item experience-item" data-section="experience">
-                        <i data-lucide="briefcase" class="nav-icon"></i> Experience
+                    <a href="#highlights" class="nav-item experience-item" data-section="highlights">
+                        <i data-lucide="trending-up" class="nav-icon"></i> Highlights
                     </a>
-                    <a href="#education" class="nav-item education-item" data-section="education">
-                        <i data-lucide="graduation-cap" class="nav-icon"></i> Education
-                    </a>
-                    <a href="#research" class="nav-item research-item" data-section="research">
-                        <i data-lucide="flask-conical" class="nav-icon"></i> Research
-                    </a>
-                    <a href="#awards" class="nav-item awards-item" data-section="awards">
-                        <i data-lucide="award" class="nav-icon"></i> Awards
-                    </a>
-                    <a href="#participation" class="nav-item participation-item" data-section="participation">
-                        <i data-lucide="users" class="nav-icon"></i> Participation
-                    </a>
-                    <a href="#memberships" class="nav-item memberships-item" data-section="memberships">
-                        <i data-lucide="network" class="nav-icon"></i> Memberships
+                    <a href="#my-profile" class="nav-item education-item" data-section="my-profile">
+                        <i data-lucide="user" class="nav-icon"></i> My Profile
                     </a>
                     <a href="#contact" class="nav-item contact-item" data-section="contact">
                         <i data-lucide="mail" class="nav-icon"></i> Contact
@@ -164,8 +152,48 @@
             </div>
         </section>
 
+<!-- My Profile Section -->
+<section id="my-profile" class="section-wrapper">
+  <div class="container">
+    <div class="section-header">
+      <i data-lucide="user" class="section-header-icon"></i>
+      <h2 class="section-title">My Profile</h2>
+    </div>
+
+    <div class="stat-grid profile-grid">
+      <div class="stat-card profile-card active" data-target="education">
+        <i data-lucide="graduation-cap" class="stat-icon"></i>
+        <div class="stat-label">Education</div>
+      </div>
+      <div class="stat-card profile-card" data-target="experience">
+        <i data-lucide="briefcase" class="stat-icon"></i>
+        <div class="stat-label">Experience</div>
+      </div>
+      <div class="stat-card profile-card" data-target="research">
+        <i data-lucide="flask-conical" class="stat-icon"></i>
+        <div class="stat-label">Research</div>
+      </div>
+      <div class="stat-card profile-card" data-target="awards">
+        <i data-lucide="award" class="stat-icon"></i>
+        <div class="stat-label">Awards</div>
+      </div>
+      <div class="stat-card profile-card" data-target="participation">
+        <i data-lucide="users" class="stat-icon"></i>
+        <div class="stat-label">Participation</div>
+      </div>
+      <div class="stat-card profile-card" data-target="memberships">
+        <i data-lucide="network" class="stat-icon"></i>
+        <div class="stat-label">Memberships</div>
+      </div>
+    </div>
+
+    <div id="profile-content" class="profile-content"></div>
+  </div>
+</section>
+
+
         <!-- Experience Section -->
-        <section id="experience" class="section-wrapper">
+        <section id="experience" class="section-wrapper" class="hidden">
             <div class="container">
                 <div class="section-header">
                     <i data-lucide="briefcase" class="section-header-icon"></i>
@@ -191,7 +219,7 @@
         </section>
 
         <!-- Education Section -->
-        <section id="education" class="section-wrapper">
+        <section id="education" class="section-wrapper" class="hidden">
             <div class="container">
                 <div class="section-header">
                     <i data-lucide="graduation-cap" class="section-header-icon"></i>
@@ -228,7 +256,7 @@
         </section>
 
         <!-- Research Section -->
-        <section id="research" class="section-wrapper">
+        <section id="research" class="section-wrapper" class="hidden">
             <div class="container">
                 <div class="section-header">
                     <i data-lucide="flask-conical" class="section-header-icon"></i>
@@ -353,7 +381,7 @@
         </section>
 
         <!-- Awards/Recognitions Section -->
-        <section id="awards" class="section-wrapper">
+        <section id="awards" class="section-wrapper" class="hidden">
             <div class="container">
                 <div class="section-header">
                     <i data-lucide="award" class="section-header-icon"></i>
@@ -393,7 +421,7 @@
         </section>
 
         <!-- Participation Section -->
-        <section id="participation" class="section-wrapper">
+        <section id="participation" class="section-wrapper" class="hidden">
             <div class="container">
                 <div class="section-header">
                     <i data-lucide="users" class="section-header-icon"></i>
@@ -471,7 +499,7 @@
         </section>
 
         <!-- Professional Memberships Section -->
-        <section id="memberships" class="section-wrapper">
+        <section id="memberships" class="section-wrapper" class="hidden">
             <div class="container">
                 <div class="section-header">
                     <i data-lucide="network" class="section-header-icon"></i>
@@ -540,7 +568,7 @@
 
      <!-- Scroll to Top Button -->
     <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
-        <i data-lucide="arrow-up" class="scroll-top-icon"></i>
+        <i data-lucide="user" class="scroll-top-icon"></i>
     </button>
 
     

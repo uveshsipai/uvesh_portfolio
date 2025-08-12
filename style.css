@@ -124,6 +124,7 @@ body {
     padding-left: 0.5rem; /* ADJUSTED: Increased for active item overflow fix */
     padding-right: 0.5rem; /* ADJUSTED: Increased for active item overflow fix */
     padding-bottom: 0.5rem; /* Add padding to bottom of dropdown menu for symmetry */
+	width: 10rem;
 }
 
 @media (min-width: 768px) {
@@ -304,10 +305,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+	transition-property: transform;
+	transition-duration: 100ms;
+	transform: scale(1); /* Initial scale */
 }
 
 .social-link:hover {
-    color: #e5e7eb; /* hover:text-gray-200 */
+    /*color: #e5e7eb; /* hover:text-gray-200 */
+	transform:scale(1.05);
 }
 
 .social-icon {
@@ -633,10 +638,10 @@ body {
 .footer {
     background-color: #1f2937; /* bg-gray-800 */
     color: #ffffff;
-    padding-top: 2rem; /* py-8 */
-    padding-bottom: 2rem; /* py-8 */
+    padding-top: 1rem; /* py-8 */
+    padding-bottom: 0.5rem; /* py-8 */
     text-align: center;
-    margin-top: 3rem; /* mt-12 */
+    margin-top: 0rem; /* mt-12 */
     border-top-left-radius: 0.5rem; /* rounded-t-lg */
     border-top-right-radius: 0.5rem; /* rounded-t-lg */
     box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
@@ -754,4 +759,80 @@ body {
 }
 
 
+/* My Profile styles */
+.profile-grid .profile-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
+.profile-grid .profile-card.active {
+  background-color: #A00C30;
+  color: #fff;
+}
+
+.profile-grid .profile-card.active .stat-icon {
+  color: #fff;
+}
+
+.profile-card:hover {
+  transform: scale(1.05);
+}
+
+.profile-content {
+  margin-top: 2rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+/* Make active profile button text white */
+.profile-card.active,
+.profile-card.active .stat-label {
+  color: #fff !important;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Make My Profile cards uniform and responsive like highlights */
+/* .profile-grid { */
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+  /* gap: 1.5rem; */
+/* } */
+
+/* .profile-grid .profile-card { */
+  /* height: 150px; /* same height for all */ */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* text-align: center; */
+/* } */
+
+/* Smaller My Profile cards, still responsive like highlights */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* was 150px */
+  gap: 0.5rem; /* reduce spacing */
+}
+
+.profile-grid .profile-card {
+  height: 80px; /* was 150px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile-card .stat-icon {
+  font-size: 1.5rem; /* slightly smaller icon */
+}
+
+.profile-card .stat-label {
+  font-size: 1rem; /* slightly smaller text */
+}

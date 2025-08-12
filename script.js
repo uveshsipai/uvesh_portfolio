@@ -162,9 +162,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        // window.scrollTo({
+            // top: 0,
+            // behavior: 'smooth'
+		document.querySelector('#my-profile').scrollIntoView({
+        behavior: 'smooth'
         });
     });
 });
+
+// My Profile tab switching
+document.addEventListener('DOMContentLoaded', () => {
+  const profileCards = document.querySelectorAll('.profile-card');
+  const profileContent = document.getElementById('profile-content');
+  const hiddenSections = ['education', 'experience', 'research', 'awards', 'participation', 'memberships']
+    .map(id => document.getElementById(id));
+
+  function loadSection(sectionId) {
+    // Keep all original sections hidden
+    hiddenSections.forEach(sec => {
+      if (sec) sec.classList.add('hidden');
+    });
+
+    // Load the requested section content
+    const section = document.getElementById(sectionId);
+    if (section) {
+      profileContent.innerHTML = section.innerHTML;
+    }
+  }
+
+  profileCards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Remove active from all
+      profileCards.forEach(c => c.classList.remove('active'));
+      // Add active to clicked
+      card.classList.add('active');
+      // Load corresponding section
+      const target = card.getAttribute('data-target');
+      loadSection(target);
+    });
+  });
+
+  // Load first tab by default
+  if (profileCards.length > 0) {
+    const firstTarget = profileCards[0].getAttribute('data-target');
+    loadSection(firstTarget);
+  }
+});
+
+
