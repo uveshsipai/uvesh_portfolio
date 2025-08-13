@@ -149,7 +149,7 @@ body {
 
 .nav-item:hover {
     background-color: #f3f4f6; /* hover:bg-gray-100 */
-    color: #800020; /* hover:text-[#800020] */
+    color: #A00C30; /* hover:text-[#A00C30] */
 }
 
 .nav-icon {
@@ -160,7 +160,7 @@ body {
 
 /* Active Nav Item */
 .nav-item.active {
-    background-color: #800020;
+    background-color: #A00C30;
     color: #ffffff;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
 }
@@ -205,7 +205,7 @@ body {
 .section-header-icon {
     width: 4rem; /* w-8 */
     height: 4rem; /* h-8 */
-    color: #800020;
+    color: #A00C30;
     margin-bottom: 0rem; /* mb-4 */
 }
 
@@ -227,7 +227,7 @@ body {
     transform: translateX(-50%);
     width: 6rem; /* w-24 */
     height: 0.25rem; /* h-1 */
-    background-color: #800020;
+    background-color: #A00C30;
     border-radius: 9999px; /* rounded-full */
 }
 
@@ -235,7 +235,7 @@ body {
 .home-section {
     padding-top: 3rem; /* py-20 */
     padding-bottom: 3rem; /* py-20 */
-    background-color: #800020; /* bg-[#800020] */
+    background-color: #A00C30; /* bg-[#A00C30] */
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -377,14 +377,14 @@ body {
     height: 3rem; /* h-12 */
     margin-left: auto;
     margin-right: auto;
-    color: #800020;
+    color: #A00C30;
     margin-bottom: 0.75rem; /* mb-3 */
 }
 
 .stat-number {
     font-size: 3rem; /* text-5xl */
     font-weight: 800; /* font-extrabold */
-    color: #800020;
+    color: #A00C30;
     margin-bottom: 0.5rem; /* mb-2 */
 }
 
@@ -436,7 +436,7 @@ body {
 }
 
 .card-subtitle {
-    color: #800020;
+    color: #A00C30;
     font-size: 1.125rem; /* text-lg */
     margin-top: 0; /* Ensures no extra top margin from browser defaults */
     margin-bottom: 0.5rem; /* mb-2 */
@@ -464,7 +464,7 @@ body {
 .sub-section-title {
     font-size: 1.875rem; /* text-3xl */
     font-weight: 600; /* font-semibold */
-    color: #800020;
+    color: #A00C30;
     margin-bottom: 1.5rem; /* mb-6 */
     display: flex;
     align-items: center;
@@ -590,7 +590,7 @@ body {
 .award-icon-small {
     width: 1.5rem; /* w-6 */
     height: 1.5rem; /* h-6 */
-    color: #800020;
+    color: #A00C30;
     margin-right: 0.75rem; /* mr-3 */
     flex-shrink: 0; /* flex-shrink-0 */
 }
@@ -622,7 +622,7 @@ body {
 }
 
 .contact-link {
-    color: #800020;
+    color: #A00C30;
     text-decoration: none;
 }
 
@@ -630,7 +630,7 @@ body {
 .contact-icon { /* New style for the Lucide icons */
     width: 1.25rem; /* w-5 */
     height: 1.25rem; /* h-5 */
-    color: #800020; /* Matches your accent color */
+    color: #A00C30; /* Matches your accent color */
     flex-shrink: 0; /* Prevents the icon from shrinking on small screens */
 }
 
@@ -666,7 +666,7 @@ body {
 }
 
 .decimal-list a:hover {
-    color: #800020; /* Optionally, change color on hover to your accent color */
+    color: #A00C30; /* Optionally, change color on hover to your accent color */
 }
 
 .card-title-wrapper {
@@ -678,7 +678,7 @@ body {
 }
 
 .card-title-primary {
-    color: #800020;
+    color: #A00C30;
     font-weight: 600;
     font-size: 1.25rem;
     margin: 0;
@@ -700,7 +700,7 @@ body {
     justify-content: center;
 }
 .skill-btn {
-    background-color: #800020;
+    background-color: #A00C30;
     color: #fff;
     border: 2px solid transparent;
     border-radius: 9999px;
@@ -711,8 +711,8 @@ body {
 }
 .skill-btn:hover {
     background-color: #fff;
-    color: #800020;
-    border-color: #800020;
+    color: #A00C30;
+    border-color: #A00C30;
 }
 
 .research-interests {
@@ -734,7 +734,7 @@ body {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background-color: #800020;
+    background-color: #A00C30;
     color: #fff;
     border: 2px solid transparent;
     border-radius: 50%;
@@ -750,8 +750,8 @@ body {
 }
 .scroll-top-btn:hover {
     background-color: #fff;
-    color: #800020;
-    border-color: #800020;
+    color: #A00C30;
+    border-color: #A00C30;
 }
 .scroll-top-icon {
     width: 1.5rem;
@@ -766,7 +766,7 @@ body {
 }
 
 .profile-grid .profile-card.active {
-  background-color: #800020;
+  background-color: #A00C30;
   color: #fff;
 }
 
