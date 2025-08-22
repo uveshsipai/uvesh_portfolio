@@ -56,8 +56,8 @@ body {
 }
 
 .logo-img {
-    width: 137px;
-    height: 58px;
+    width: auto;
+    height: 40px;
     /* object-fit: contain; /* Adjust as needed */
 }
 
@@ -70,7 +70,7 @@ body {
     outline: none;
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem; /* px-4 py-2 */
+    padding: 0 .75rem; /* px-4 py-2 */
     border-radius: 9999px; /* rounded-full */
     background-color: transparent;
     border: none;
@@ -105,7 +105,6 @@ body {
     }
 }
 
-
 .dropdown-menu {
     position: absolute;
     right: 0;
@@ -133,7 +132,6 @@ body {
     }
 }
 
-
 .nav-item {
     display: flex;
     align-items: center;
@@ -153,8 +151,8 @@ body {
 }
 
 .nav-icon {
-    width: 1.25rem; /* w-5 */
-    height: 1.25rem; /* h-5 */
+    width: 1.375rem; /* w-5 */
+    height: 1.375rem; /* h-5 */
     margin-right: 0.25rem; /* mr-1 */
 }
 
@@ -165,12 +163,10 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
 }
 
-
 /* Main Content Padding */
 .main-content {
-    padding-top: 5rem; /* pt-24 (to offset fixed header) */
+    padding-top: var(--nav-h); /* pt-24 (to offset fixed header) */
 }
-
 
 /* Section Wrapper Styles */
 .section-wrapper {
@@ -298,21 +294,17 @@ body {
 }
 
 .social-link {
-    color: #ffffff;
+    color: #A00C30;
     text-decoration: none;
     transition-property: color;
     transition-duration: 200ms; /* transition-colors duration-200 */
     display: flex;
     flex-direction: column;
     align-items: center;
-	transition-property: transform;
-	transition-duration: 100ms;
-	transform: scale(1); /* Initial scale */
 }
 
 .social-link:hover {
-    /*color: #e5e7eb; /* hover:text-gray-200 */
-	transform:scale(1.05);
+    color: #7a0a25; /* hover:text-gray-200 */
 }
 
 .social-icon {
@@ -335,7 +327,6 @@ body {
         font-size: 0.875rem; /* md:text-sm */
     }
 }
-
 
 /* Stat Cards (Highlights Section) */
 .stat-grid {
@@ -426,7 +417,6 @@ body {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* hover:shadow-xl */
 }
 
-
 .card-title {
     font-size: 1.5rem; /* text-2xl */
     font-weight: 700; /* font-bold */
@@ -488,7 +478,6 @@ body {
     /* This media query block is now effectively empty for .card-container's flex-direction */
 }
 
-
 .content-card {
     background-color: #ffffff;
     padding: 2rem; /* p-8 */
@@ -530,7 +519,6 @@ body {
     margin-bottom: 0;
 }
 
-
 /* Project Item */
 .project-item {
     background-color: #ffffff;
@@ -569,7 +557,6 @@ body {
     color: #92400e; /* text-yellow-800 */
 }
 
-
 /* Award Item */
 .award-item {
     background-color: #ffffff;
@@ -604,7 +591,6 @@ body {
     margin: 0;
 }
 
-
 /* Contact Section */
 .contact-text {
     font-size: 1.125rem; /* text-lg */
@@ -625,7 +611,6 @@ body {
     color: #A00C30;
     text-decoration: none;
 }
-
 
 .contact-icon { /* New style for the Lucide icons */
     width: 1.25rem; /* w-5 */
@@ -758,81 +743,147 @@ body {
     height: 1.5rem;
 }
 
+/* Make the name in the Home section use the primary color */
+.home-section .section-title-large { color: #A00C30; }
 
-/* My Profile styles */
-.profile-grid .profile-card {
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+.content-card .social-icon, .content-card .social-label { color: inherit; }
+
+#about .about-card,
+#about .about-card p,
+#about .about-card .social-links { text-align: center; }
+#about .about-card .social-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+
+#about .content-card { margin-bottom: 2rem; }
+#about .content-card:last-child { margin-bottom: 0; }
+
+#about .about-card { margin-bottom: 2rem; }
+
+/* Ensure Home section stays light */
+.home-section { background-color: #f7f7f7; color: #343434; }
+
+/* Ensure Home base background */
+.home-section { background-color: #f7f7f7; color: #343434; }
+
+.home-section { position: relative; overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+    
 }
 
-.profile-grid .profile-card.active {
-  background-color: #A00C30;
-  color: #fff;
-}
+/* Baseline Home background */
+.home-section { background-color: #f7f7f7; color: #343434; }
 
-.profile-grid .profile-card.active .stat-icon {
-  color: #fff;
-}
+/* === Compact frosted header (approx 40px) === */
+:root { --nav-h: 60px; }
 
-.profile-card:hover {
-  transform: scale(1.05);
-}
-
-.profile-content {
-  margin-top: 2rem;
-  animation: fadeIn 0.4s ease-in-out;
-}
-/* Make active profile button text white */
-.profile-card.active,
-.profile-card.active .stat-label {
-  color: #fff !important;
-}
-
-.hidden {
-  display: none;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Make My Profile cards uniform and responsive like highlights */
-/* .profile-grid { */
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
-  /* gap: 1.5rem; */
-/* } */
-
-/* .profile-grid .profile-card { */
-  /* height: 150px; /* same height for all */ */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* text-align: center; */
-/* } */
-
-/* Smaller My Profile cards, still responsive like highlights */
-.profile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* was 150px */
-  gap: 0.5rem; /* reduce spacing */
-}
-
-.profile-grid .profile-card {
-  height: 80px; /* was 150px */
+.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: var(--nav-h);
+  height: var(--nav-h);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  background-color: rgba(247, 247, 247, 0.75); /* #f7f7f7 with light transparency */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
-.profile-card .stat-icon {
-  font-size: 1.5rem; /* slightly smaller icon */
+.navbar-container { align-items: center; }
+
+.navbar .logo-img {
+  height: 40px;           /* fits within 40px header comfortably */
+  width: auto; /* override fixed width */
 }
 
-.profile-card .stat-label {
-  font-size: 1rem; /* slightly smaller text */
+/* Menu toggle sizing to fit header */
+.menu-toggle {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 .75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon, .close-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Optional: Make dropdown open feel consistent with compact header */
+.dropdown-menu {
+  margin-top: 0.5rem;
+}
+
+/* === Navbar left/right alignment overrides === */
+.navbar { display: flex; }
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, menu right */
+  width: 100%;
+}
+.navbar-logo { display: flex; align-items: center; margin: 0; }
+.navbar-menu-wrapper { display: flex; align-items: center; margin-left: auto; }
+
+/* Dropdown menu background + hover behavior */
+.dropdown-menu {
+  background-color: #f7f7f7;
+}
+
+/* On hover, only change text color—no background fill */
+.nav-item:hover {
+  background-color: transparent;
+  color: #A00C30;
+}
+
+/* Frosted dropdown to match header */
+.dropdown-menu {
+  background-color: rgba(247, 247, 247, 0.75); /* #f7f7f7 with light transparency */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* Keep hover clean: text turns primary, no background fill */
+.dropdown-menu .nav-item:hover {
+  background-color: transparent;
+  color: #A00C30;
+}
+
+/* Force solid dropdown background (no transparency) */
+.dropdown-menu {
+  background-color: #f7f7f7; /* solid */
+}
+
+html { scroll-padding-top: var(--nav-h); }
+
+/* Remove shadow on Home section */
+.home-section { box-shadow: none; }
+
+/* Remove border-bottom from all sections */
+.section-wrapper, section {
+  border-bottom: none;
+}
+
+#home {
+  position: relative;
+  overflow: hidden;
+  background-color: #f7f7f7; /* keep base */
+
+}
+#home > * {
+  position: relative;
+  z-index: 1; /* content above the glow */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  
 }
