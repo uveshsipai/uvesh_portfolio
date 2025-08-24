@@ -28,15 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (targetElement) {
                 // Adjust for fixed header height
-                const headerOffset = 80; // height of your fixed navbar
+                const headerOffset = document.querySelector('.navbar')?.offsetHeight || 60; // dynamic navbar height
                 const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - headerOffset;
+                const offsetPosition = elementPosition - headerOffset + 1; // +1 to avoid boundary off-by-one
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                // Sync active state immediately
+                if (typeof highlightNavLink === "function") { highlightNavLink(); }
                 // Update active class for nav items (if applicable in dropdown)
                 document.querySelectorAll('.nav-item').forEach(item => {
                     item.classList.remove('active');
@@ -45,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // --- FIX: Close dropdown and reset icons reliably after navigation ---
                 setMenuClosedState(); // Use the dedicated function to close and reset icons
+                if (typeof highlightNavLink === "function") { highlightNavLink(); }
                 // --- End Fix ---
             }
         });
@@ -73,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) { // If menu is currently open
                 setMenuClosedState(); // Use the dedicated function to close and reset icons
+                if (typeof highlightNavLink === "function") { highlightNavLink(); }
             }
         }
     });
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             const sectionTop = section.offsetTop - document.querySelector('.navbar').offsetHeight; // Adjust for fixed header
             const sectionHeight = section.offsetHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            if (window.scrollY + 1 >= sectionTop && window.scrollY + 1 < sectionTop + sectionHeight) {
                 currentActiveSection = section.id;
             }
         });
@@ -167,4 +167,54 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+});
+
+// --- Immediate active state on dropdown click (fix for shorter header) ---
+(function() {
+  function setActiveLinkByHash(hash) {
+    document.querySelectorAll('.dropdown-menu a.nav-item, a.nav-item').forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('href') === hash);
+    });
+  }
+
+  document.querySelectorAll('.dropdown-menu a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      const targetId = href.slice(1);
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      e.preventDefault();
+
+      // Set active immediately so dropdown reflects the selection without waiting for scroll
+      setActiveLinkByHash(href);
+
+      const headerOffset = document.querySelector('.navbar')?.offsetHeight || 60;
+      const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerOffset + 1;
+
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+
+      // Also sync highlight logic right away if present
+      if (typeof highlightNavLink === "function") { highlightNavLink(); }
+    });
+  });
+})();
+
+
+// Staggered hero entrance (runs once on load)
+document.addEventListener('DOMContentLoaded', () => {
+  const home = document.getElementById('home');
+  if (!home) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReduced) {
+    // Respect reduced motion: immediately reveal with no animation
+    home.classList.add('hero-in');
+    return;
+  }
+
+  // Trigger on next frame so initial styles apply before animating
+  requestAnimationFrame(() => {
+    home.classList.add('hero-in');
+  });
 });

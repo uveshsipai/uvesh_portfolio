@@ -887,3 +887,114 @@ html { scroll-padding-top: var(--nav-h); }
 @media (prefers-reduced-motion: reduce) {
   
 }
+
+
+/* === Staggered Hero Entrance (Home) === */
+@media (prefers-reduced-motion: no-preference) {
+  #home .profile-photo,
+  #home .section-title-large,
+  #home .section-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: transform, opacity;
+  }
+
+  #home.hero-in .profile-photo {
+    animation: heroFadeUp 0.6s ease-out 0s both;
+  }
+  #home.hero-in .section-title-large {
+    animation: heroFadeUp 0.6s ease-out 0.18s both;
+  }
+  #home.hero-in .section-subtitle {
+    animation: heroFadeUp 0.6s ease-out 0.36s both;
+  }
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
+
+/* Reduced motion: show instantly, no animation */
+@media (prefers-reduced-motion: reduce) {
+  #home .profile-photo,
+  #home .section-title-large,
+  #home .section-subtitle {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* No gap between Research Interests and Hobbies */
+.research-interests .content-card:first-child {
+  margin-bottom: 0;
+}
+
+
+/* Social icon hover: keep color, scale icon slightly */
+.social-link:hover { color: inherit; }
+.social-icon { transition: transform .2s ease; transform-origin: 50% 50%; }
+.social-link:hover .social-icon { transform: scale(1.08); }
+
+
+/* Social links: font weight + hover behavior (no color change, gentle scale) */
+.social-label {
+  font-weight: 600;
+  display: inline-block;
+  transition: transform .2s ease;
+  transform-origin: 50% 50%;
+}
+.social-icon {
+  transition: transform .2s ease;
+  transform-origin: 50% 50%;
+}
+.social-link:hover,
+.social-link:focus {
+  color: inherit !important; /* keep current color (no change on hover) */
+}
+.social-link:hover .social-icon,
+.social-link:focus .social-icon,
+.social-link:hover .social-label,
+.social-link:focus .social-label {
+  transform: scale(1.08);
+}
+
+
+/* Social hover update: icon only scales; text stays same; no color change */
+.social-link:hover,
+.social-link:focus { color: inherit !important; }
+
+/* Keep label bold but do not animate/scale it */
+.social-label { font-weight: 600; transition: none; }
+.social-link:hover .social-label,
+.social-link:focus .social-label { transform: none; }
+
+/* Only the icon gently scales on hover/focus */
+.social-icon { transition: transform .2s ease; transform-origin: 50% 50%; }
+.social-link:hover .social-icon,
+.social-link:focus .social-icon { transform: scale(1.08); }
+
+
+/* Keep accent color on social links (hover/focus) and icon-only scale */
+.content-card .social-link,
+.social-link {
+  color: #A00C30;
+}
+
+.content-card .social-link:hover,
+.content-card .social-link:focus,
+.social-link:hover,
+.social-link:focus {
+  color: #A00C30 !important; /* do not change color on hover */
+  text-decoration: none;
+}
+
+/* Icon only scales; text remains same (bold) */
+.social-label { font-weight: 600; transition: none; }
+.social-link:hover .social-label,
+.social-link:focus .social-label { transform: none; }
+
+.social-icon { transition: transform .2s ease; transform-origin: 50% 50%; }
+.social-link:hover .social-icon,
+.social-link:focus .social-icon { transform: scale(1.08); }
