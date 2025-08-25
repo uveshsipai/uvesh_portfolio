@@ -511,9 +511,9 @@ body {
     color: #343434;
 }
 .decimal-list li p {
-    margin: 0; /* Remove default paragraph margin */
-    display: inline; /* Keep text on same line as list number */
-    font-size: 1rem; /* Explicitly set font size */
+    margin: 0.15rem 0; /* slight spacing between lines */
+    display: block; /* each line breaks as requested */
+    font-size: 1rem;
 }
 .decimal-list li:last-child {
     margin-bottom: 0;
@@ -753,7 +753,7 @@ body {
 #about .about-card .social-links { text-align: center; }
 #about .about-card .social-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
 
-#about .content-card { margin-bottom: 2rem; }
+#about .content-card { margin-bottom: 0rem; }
 #about .content-card:last-child { margin-bottom: 0; }
 
 #about .about-card { margin-bottom: 2rem; }
