@@ -30,6 +30,37 @@
             --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
         }
 
+        /* ==============================
+           Modern Gradient Scrollbar
+        ================================ */
+
+        /* Chrome, Edge, Safari */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 9999px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--accent-dark), var(--accent-light));
+            border-radius: 9999px;
+            border: 2px solid #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-dark));
+        }
+
+        /* Firefox */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-dark) #f1f5f9;
+        }
+
+
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px; /* Offset for fixed navbar */
@@ -41,6 +72,11 @@
             color: var(--text-dark);
             background-color: #f8fafc; /* Slightly off-white */
             line-height: 1.6;
+        }
+
+        /* Ensure sizing calculations are consistent across components */
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
         .container {
@@ -118,7 +154,16 @@
             background-color: var(--gray-100);
         }
         
-        .navbar-menu-wrapper {
+        
+        /* Hover scale behavior: desktop scrolled navbar + mobile dropdown */
+        .navbar.scrolled .nav-item {
+            transition: transform 0.15s ease, background-color 0.2s, color 0.2s;
+            transform-origin: center;
+        }
+        .navbar.scrolled .nav-item:hover {
+            transform: scale(1.03);
+        }
+.navbar-menu-wrapper {
             position: relative;
         }
 
@@ -132,7 +177,7 @@
             width: 12rem;
             z-index: 50;
             padding: 0.5rem;
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(229, 231, 235, 0.7);
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
@@ -168,19 +213,20 @@
 
         /* Hero Section - Teal/Cyan Gradient */
         .hero-section {
-            padding-top: 120px; /* Space for navbar */
-            padding-bottom: 4rem;
+            padding-top: 60px; /* Space for hero content */
+            padding-bottom: 40px;
 			margin-bottom:64px;
             text-align: center;
             color: var(--white);
             background: linear-gradient(135deg, var(--accent-dark), var(--accent-light));
-            border-bottom-left-radius: 2rem;
-            border-bottom-right-radius: 2rem;
+            border-bottom-left-radius: 3rem;
+            border-bottom-right-radius: 3rem;
+            position: relative; /* anchor hero logo */
         }
 
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--white);
@@ -232,10 +278,10 @@
         /* Cards - Pill-style rounding, soft shadows, hover lift */
         .content-card {
             background-color: var(--white);
-            border-radius: 1.5rem; /* Large rounding */
+            border-radius: 3rem; /* Uniform card rounding */
             padding: 2rem;
             box-shadow: var(--shadow-soft);
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(229, 231, 235, 0.7);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 2rem;
         }
@@ -260,7 +306,7 @@
         .card-title-secondary {
              font-size: 1.1rem;
              font-weight: 600;
-             margin-top: 1.5rem;
+             margin-top: 40px;
              margin-bottom: 0.75rem;
              color: var(--accent-dark);
         }
@@ -299,11 +345,11 @@
 
         .stat-card {
             background-color: var(--white);
-            border-radius: 1.5rem;
+            border-radius: 3rem;
             padding: 1.5rem;
             text-align: center;
             box-shadow: var(--shadow-soft);
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(229, 231, 235, 0.7);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
@@ -337,22 +383,26 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
+            justify-content: center;
         }
 
         .skill-btn {
-            background-color: var(--gray-100);
-            color: var(--text-dark);
-            border: none;
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--text-light);
+            border: 1px solid rgba(229, 231, 235, 0.9);
             border-radius: 9999px; /* Pill shape */
-            padding: 0.6rem 1.25rem;
+            padding: 0.75rem 1rem;
+            font: inherit;
             font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         }
 
         .skill-btn:hover {
-            background-color: var(--accent-dark);
+            background: linear-gradient(to right, var(--accent-dark), var(--accent-light));
             color: var(--white);
+            border-color: transparent;
+            box-shadow: var(--shadow-soft);
             transform: scale(1.05);
         }
 
@@ -384,6 +434,37 @@
             color: inherit;
         }
         
+        .view-toggle {
+            display: inline-block;
+            margin-top: 0.25rem;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+        .view-toggle:hover {
+            color: var(--accent-dark);
+        }
+
+        /* Align View More/Less with list item text (not the number marker) */
+        .research-list + .view-toggle,
+        .ipr-list + .view-toggle,
+        ol + .view-toggle,
+        ul + .view-toggle {
+            margin-left: 1.4rem;
+        }
+
+        /* Clamp long descriptions in Education/Experience (3 lines) */
+        .desc-clamp {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
 
         /* Side-by-side container for Interests & Hobbies */
         .side-by-side-container {
@@ -413,19 +494,34 @@
         }
 
         /* Accordion Styles for "Others" Section */
+        /* Others Section - Card list (View More / View Less) */
+        .others-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
         .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            border-radius: 0;
+            overflow: visible;
+        }
+
+        /* Each accordion subsection as a separate card */
+        .accordion-item {
             background-color: var(--white);
             border-radius: 1.5rem;
             box-shadow: var(--shadow-soft);
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(229, 231, 235, 0.7);
             overflow: hidden;
         }
-
-        .accordion-item:not(:last-child) {
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        .accordion-header {
+.accordion-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -478,10 +574,11 @@
         /* Scroll to Top Button */
         .scroll-top-btn {
             position: fixed;
+            font-size: 0.9rem;
             bottom: 1.5rem;
             right: 1.5rem;
-            width: 3.5rem;
-            height: 3.5rem;
+            width: 2.1rem;
+            height: 2.1rem;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-dark), var(--accent-light));
             color: var(--white);
@@ -505,7 +602,211 @@
         }
 
         .scroll-top-btn:hover {
-            box-shadow: 0 0 20px var(--accent-dark);
+            box-shadow: none;
+            transform: scale(1.05);
+        }
+
+    
+        /* --- Desktop nav behavior (Hero menu -> Sticky navbar on scroll) --- */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .hero-nav {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 40px;
+        }
+
+        .nav-item--text {
+            gap: 0;
+        }
+
+        /* Desktop/Laptop */
+        @media (min-width: 769px) {
+            /* Hide hamburger dropdown UI on desktop */
+            .navbar-menu-wrapper {
+                display: none;
+            }
+
+            /* Show desktop nav inside navbar (only when scrolled) */
+            .desktop-nav {
+                display: flex;
+            }
+
+            /* Navbar hidden at top; appears after scroll threshold (via .scrolled class) */
+            .navbar {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+            .navbar.scrolled {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            /* Hero menu visible at top; hides when user scrolls (body.nav-scrolled set in JS) */
+            .hero-nav {
+                display: flex;
+                transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+            }
+
+            body.nav-scrolled .hero-nav {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(-10px);
+            }
+
+            /* Hero nav item styling (text-only, centered) */
+            .hero-nav .nav-item {
+                color: rgba(255, 255, 255, 0.92);
+                padding: 0;
+                border-radius: 0;
+                background: transparent;
+                border: 0;
+                text-decoration: none;
+                transition: transform 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+            }
+
+            .hero-nav .nav-item:hover {
+                background: transparent;
+                color: var(--white);
+                text-decoration: none;
+                transform: scale(1.06);
+            }
+
+            .hero-nav .nav-item.active {
+                background: transparent;
+                color: var(--white);
+                text-decoration: none;
+                transform: scale(1.06);
+            }
+
+            /* Desktop nav item styling inside sticky navbar (no icons) */
+            .desktop-nav .nav-item {
+                padding: 0.5rem 0.9rem;
+                border-radius: 9999px;
+                color: var(--text-light);
+            }
+
+            .desktop-nav .nav-item:hover {
+                background-color: var(--gray-100);
+                color: var(--text-dark);
+            }
+
+            .desktop-nav .nav-item.active {
+                background: linear-gradient(to right, var(--accent-dark), var(--accent-light));
+                color: var(--white);
+                box-shadow: var(--shadow-soft);
+            }
+        }
+
+    
+        /* -----------------------------
+           Requested tweaks (Jan 2026)
+        ------------------------------*/
+        /* HERO (desktop): text-only menu (no pill), centered below subtitle */
+        .hero-logo {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            display: none;
+            z-index: 60;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+        }
+        .hero-logo img {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1); /* white in hero */
+        }
+
+        body.nav-scrolled .hero-logo {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-10px);
+        }
+
+        @media (min-width: 769px) {
+            .hero-logo { display: inline-flex; align-items: center; justify-content: center; }
+            .hero-nav {
+                background: transparent !important;
+                box-shadow: none !important;
+                border: 0 !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+                justify-content: center;
+                gap: 1.75rem;
+            }
+            .hero-nav .nav-item--text {
+                padding: 0 !important;
+                border-radius: 0 !important;
+                background: transparent !important;
+            }
+            .hero-nav .nav-item--text:hover {
+                background: transparent !important;
+                text-decoration: none;
+                transform: scale(1.06);
+            }
+        }
+
+        /* MOBILE: dropdown menu text-only + pill-style menu ITEMS */
+        @media (max-width: 1023px) {
+            .dropdown-menu {
+                width: max-content;
+                max-width: calc(100vw - 2rem);
+                right: -1.5rem; /* align with navbar outer edge */
+                top: calc(100% + 0.75rem); /* sit below navbar */
+                margin-top: 0.50rem; /* additional gap below navbar */
+                border-radius: 35px; /* requested mobile dropdown radius */
+                padding: 0.6rem;
+                /* Match the frosted scrolled navbar (stronger + more reliable on mobile/WebKit) */
+                background-color: var(--white); /* solid (no transparency) */
+                border: 1px solid rgba(229, 231, 235, 0.7);
+                box-shadow: var(--shadow-medium);
+                gap: 0.5rem;
+                align-items: stretch; /* uniform pill width */
+                overflow: hidden; /* prevent pills from spilling outside */
+                transform: translateY(0);
+                will-change: transform;
+                font-size: inherit;
+            }
+            .dropdown-menu .nav-item {
+                width: 100%;
+                font: inherit;
+                font-weight: 500;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                transition: transform 0.15s ease, background-color 0.2s, color 0.2s;
+                transform-origin: center;
+                border-radius: 9999px;
+                padding: 0.75rem 1rem;
+                gap: 0; /* no icons */
+                /* Frosted pill on each item (like navbar blur), not just the container */
+                background: var(--white); /* solid (no blur) */
+                border: none;
+                box-shadow: none; /* non-active items: no shadow */
+            }
+            .dropdown-menu .nav-item.active {
+                background: linear-gradient(to right, var(--accent-dark), var(--accent-light));
+                color: var(--white);
+                border-color: transparent;
+                box-shadow: var(--shadow-soft);
+            }
+            .dropdown-menu .nav-item:hover {
+                /* Keep hover/active consistent with desktop scrolled navbar */
+                background-color: rgba(243, 244, 246, 0.75);
+                color: var(--text-dark);
+                transform: scale(1.03);
+            }
         }
 
     </style>
@@ -517,6 +818,16 @@
             <a href="#home" class="navbar-logo">
                 <img src="Resources/logo.svg" alt="Personal Logo" class="logo-img">
             </a>
+            <div class="desktop-nav">
+                <a href="#home" class="nav-item nav-item--text" data-section="home">Home</a>
+<a href="#about" class="nav-item nav-item--text" data-section="about">About</a>
+                <a href="#experience" class="nav-item nav-item--text" data-section="experience">Experience</a>
+                <a href="#education" class="nav-item nav-item--text" data-section="education">Education</a>
+                <a href="#research" class="nav-item nav-item--text" data-section="research">Research</a>
+                <a href="#awards" class="nav-item nav-item--text" data-section="awards">Awards</a>
+                <a href="#others" class="nav-item nav-item--text" data-section="others">Others</a>
+            </div>
+
 
             <div class="navbar-menu-wrapper">
                 <button class="menu-toggle" aria-label="Toggle Navigation">
@@ -526,13 +837,13 @@
                 </button>
 
                 <div class="dropdown-menu hidden">
-                    <a href="#home" class="nav-item" data-section="home"><i data-lucide="home" class="nav-icon"></i> Home</a>
-                    <a href="#about" class="nav-item" data-section="about"><i data-lucide="user" class="nav-icon"></i> About</a>
-                    <a href="#experience" class="nav-item" data-section="experience"><i data-lucide="briefcase" class="nav-icon"></i> Experience</a>
-                    <a href="#education" class="nav-item" data-section="education"><i data-lucide="graduation-cap" class="nav-icon"></i> Education</a>
-                    <a href="#research" class="nav-item" data-section="research"><i data-lucide="flask-conical" class="nav-icon"></i> Research</a>
-                    <a href="#awards" class="nav-item" data-section="awards"><i data-lucide="award" class="nav-icon"></i> Awards</a>
-                    <a href="#others" class="nav-item" data-section="others"><i data-lucide="users" class="nav-icon"></i> Others</a>
+                    <a href="#home" class="nav-item" data-section="home">Home</a>
+                    <a href="#about" class="nav-item" data-section="about">About</a>
+                    <a href="#experience" class="nav-item" data-section="experience">Experience</a>
+                    <a href="#education" class="nav-item" data-section="education">Education</a>
+                    <a href="#research" class="nav-item" data-section="research">Research</a>
+                    <a href="#awards" class="nav-item" data-section="awards">Awards</a>
+                    <a href="#others" class="nav-item" data-section="others">Others</a>
                 </div>
             </div>
         </div>
@@ -541,10 +852,25 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero-section">
+            <!-- Hero logo (desktop) -->
+            <a href="#home" class="hero-logo" aria-label="Home">
+                <img src="Resources/logo.svg" alt="Logo">
+            </a>
+
             <div class="container">
+
                 <img src="Resources/profile_photo.jpg" alt="Photo of Prof. Uvesh Sipai" class="profile-photo">
                 <h1 class="hero-title">Prof. Uvesh Sipai</h1>
                 <p class="hero-subtitle">Educator | Researcher | Innovator</p>
+                <div class="hero-nav" aria-label="Primary">
+                                        <a href="#about" class="nav-item nav-item--text" data-section="about">About</a>
+                    <a href="#experience" class="nav-item nav-item--text" data-section="experience">Experience</a>
+                    <a href="#education" class="nav-item nav-item--text" data-section="education">Education</a>
+                    <a href="#research" class="nav-item nav-item--text" data-section="research">Research</a>
+                    <a href="#awards" class="nav-item nav-item--text" data-section="awards">Awards</a>
+                    <a href="#others" class="nav-item nav-item--text" data-section="others">Others</a>
+                </div>
+
             </div>
         </section>
 
@@ -558,8 +884,8 @@
                 <div class="content-card">
                     <div class="card-title-wrapper"><h3 class="card-title-primary">About</h3></div>
                     <p>
-                        Dynamic and dedicated Assistant Professor in Electrical Engineering with over 8 years of academic and research experience. Specialized in power quality, power electronics, motor drives, and IoT-enabled smart systems. Proven track record in guiding UG and PG research projects, securing funded research grants, and contributing to innovative solutions through patents, copyrights, and publications in reputed journals and conferences. Skilled in leveraging artificial intelligence and IoT for problem-solving in electrical engineering applications. Adept at fostering collaborative learning, mentoring future engineers, and driving innovation in academia and industry. Recognized for excellence in teaching, research, and innovation with multiple awards and honours.
-                    </p>
+                        Dynamic academic and researcher with expertise in Artificial Intelligence, Power Quality, and Internet of Things (IoT) applications. Skilled in developing data-driven models for fault diagnosis, image-based defect detection, and intelligent monitoring systems. Demonstrates a potent blend of research and pedagogical innovation through the integration of ICT tools, simulation platforms, and outcome-based learning strategies. Recognized for excellence in teaching, research, and innovation with multiple awards and honours.
+					</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i data-lucide="linkedin"></i> LinkedIn</a>
                         <a href="#" class="social-link"><i data-lucide="graduation-cap"></i> Google Scholar</a>
@@ -1001,117 +1327,192 @@
                     <i data-lucide="layers" class="section-header-icon"></i>
                     <h2 class="section-title">Others</h2>
                 </div>
-                <div class="accordion-container">
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Conferences Attended</span>
-                            <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <ol class="research-list">
-                                    <li>Attended the 5th International Conference on Applied Science (ASEC 2024) organised by Applied Science Journal, MDPI during December 04-06, 2024</li>
-                                    <li>Attended the 11th International Electronic Conference on Sensor and Applications (ECSA-11 2024) hosted by Sensor Journal, MDPI during November 26-28, 2024</li>
-                                    <li>Attended the 2nd International Electronic Conference on Actuator Technology (IECAT 2024) hosted by Actuators Journal, MDPI during November 04-06, 2024</li>
-                                    <li>Attended and presented a paper titled Smart Road Sensing: A Machine Learning Approach for Pothole Detection and Classification in the 3rd International Conference on Advancements in Smart Computing & Information Security (ASCIS 2024) organised by Faculty of Computer Applications, Marwadi University, Rajkot, Gujarat in collaboration with Springer CCIS & Science and Engineering Research Board (SERB), Department of Science and Technology, Government of India during October 16 - 19, 2024</li>
-                                    <li>Attended and presented a paper titled AloT-Driven Energy Management system for Industrial Machineries: Monitoring, Remote Operation and Forecasting in the 3rd World Conference On Information Systems for Business Management (ISBM 2024) Bangkok, Thailand during September 12-13, 2024</li>
-                                    <li>Attended the 3rd International Electronic Conference on Processes (ECP 2024) hosted by MDPI during May 29-31, 2024</li>
-                                    <li>Participated and presented a paper titled Data-Driven Fault Diagnosis in Three-Phase IMs: Harnessing Current Signature Data with Machine Learning Algorithms in the International Conference on Sustainable Power and Energy Research (ICSPER-2024) held at NIT Warangal from March 01-03, 2024.</li>
-                                    <li>Participated in the 2nd International Conference Al-Nahrain Nano Renewable Energy Research Centre for Waste Treatment Role in Supporting Sustainable Energy Projects and Increasing National Income organised by University of Al-Nahrain during July 12 to 13, 2021</li>
-                                    <li>Participated and presented a paper titled Capacitor Voltage Balancing for Five-level Neutral-Point Clamped Inverter Using Modified Carries Waves for Carries-Based PWM Techniques at 16th IEEE India Council International Conference (INDICON 2019) held at Marwadi University during December 14-15, 2019</li>
-                                    <li>Participated and presented a paper titled Implementation and Fabrication of Power Factor Corrector using DC-DC Converter in the International Conference on Energy, Communication, Data Analytics and Soft Computing (ICECDS 2017) organised by SKR Engineering College during August 01 - 02, 2017</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>FDP/STTP/STC</span>
-                            <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for FDP/STTP/STC. You can replace this with your actual list of attended programs.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Workshop</span>
-                             <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for Workshops. You can replace this with your actual list of attended workshops.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Seminar/Webinar</span>
-                             <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for Seminars/Webinars. You can replace this with your actual list of attended events.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Expert Talk</span>
-                             <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for Expert Talks. You can replace this with your actual list of delivered talks.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Industrial Training</span>
-                             <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for Industrial Training. You can replace this with your actual list of completed trainings.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>MOOCs</span>
-                             <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for MOOCs. You can replace this with your actual list of completed courses.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Reviewer</span>
-                             <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for Reviewer roles. You can replace this with your actual list of reviewer experiences.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Membership of Professional Society</span>
-                             <i data-lucide="chevron-down" class="accordion-icon"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Dummy content for Memberships. You can replace this with your actual list of professional memberships.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="others-cards">
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">Conferences Attended</h3></div>
+                    <ol class="research-list">  
+										<li>Attended the <b>5th International Conference on Applied Science (ASEC 2024)</b> organized by the Applied Science Journal, MDPI from December 4 to 6, 2024.</li>  
+										<li>Attended the <b>11th International Electronic Conference on Sensor and Applications (ECSA-11 2024)</b> hosted by Sensor Journal, MDPI from November 26 to 28, 2024.</li>  
+										<li>Attended the <b>2nd International Electronic Conference on Actuator Technology (IECAT 2024)</b> hosted by Actuators Journal, MDPI from November 4 to 6, 2024.</li>  
+										<li>Attended and presented a paper titled <b>"Smart Road Sensing: A Machine Learning Approach for Pothole Detection and Classification"</b> in the <b>3rd International Conference on Advancements in Smart Computing & Information Security (ASCIS 2024)</b> organized by the Faculty of Computer Applications, Marwadi University, Rajkot, Gujarat in collaboration with Springer CCIS & the Science and Engineering Research Board (SERB), Department of Science and Technology, Government of India from October 16 to 19, 2024.</li>  
+										<li>Attended and presented a paper titled <b>"AIoT-Driven Energy Management System for Industrial Machineries: Monitoring, Remote Operation and Forecasting"</b> at the <b>3rd World Conference on Information Systems for Business Management</b> in Bangkok, Thailand on September 12 and 13, 2024.</li>  
+										<li>Attended the <b>3rd International Electronic Conference on Processes (ECP 2024)</b> hosted virtually by MDPI from May 29 to 31, 2024.</li>  
+										<li>Participated and presented a paper titled <b>"Data-Driven Fault Diagnosis in Three-Phase IMs: Harnessing Current Signature Data with Machine Learning Algorithms"</b> at the <b>International Conference on Sustainable Power and Energy Research (ICSPER-2024)</b> held at NIT Warangal from March 1 to 3, 2024.</li>  
+										<li>Participated in the <b>2nd International Conference of Al-Nahrain Nano Renewable Energy Research Center</b> on the <b>"Role of Waste Treatment in Supporting Sustainable Energy Projects and Increasing National Income,"</b> organized by the University of Al-Nahrain from July 12 to 13, 2021.</li>  
+										<li>Participated and presented a paper titled <b>"Capacitor Voltage Balancing for Five-level Neutral-Point Clamped Inverter Using Modified Carrier Waves for Carrier-Based PWM Techniques"</b> at the <b>16th IEEE India Council International Conference</b> at Marwadi University on December 14 and 15, 2019.</li>  
+										<li>Participated and presented a paper titled <b>"Implementation and Fabrication of Power Factor Corrector using DC-DC Converter"</b> in the <b>International Conference on Energy, Communication, Data Analytics and Soft Computing (ICECDS 2017)</b>, organized by SKR Engineering College on August 1 and 2, 2017.</li>  
+									</ol>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">Scholarly Contribution as Reviewer</h3></div>
+                    <ol class="research-list">  
+										<li>Served as a reviewer in the <b>1st International Conference on Sustainability, Innovation & Technology (ICSIT 2025)</b> organized and hosted by Symbiosis Institute of Technology, Nagpur, in collaboration with the IEEE Bombay Section from August 22 to 23, 2025.</li>  
+										<li>Served as a reviewer in the <b>1st International Conference on Artificial Intelligence and Smart Technologies for Sustainability (AISTS 2025)</b> organized and hosted by Marwadi University, Rajkot, in collaboration with the IEEE Gujarat Section from August 21 to 23, 2025.</li>  
+										<li>Served as a reviewer in the <b>3rd IEEE International Conference on Networks, Multimedia and Information Technology (NMITCON)</b> held at Nitte Meenakshi Institute of Technology, Bengaluru, in association with IEEE India from August 1 to 2, 2025.</li>  
+										<li>Served as a reviewer in the <b>International Conference on Computer, Electronics and Electrical Engineering (IC2E3 2025)</b> held at the National Institute of Technology Uttarakhand, India from May 15 to 16, 2025.</li>  
+										<li>Served as a reviewer in the <b>3rd International Conference on Advancement in Computation & Computer Technologies (InCACCT 2025)</b> organized by the Department of Computer Science & Engineering, Chandigarh University, Punjab, India, and technically sponsored by the IEEE Delhi Section on April 17 and 18, 2025.</li>  
+										<li>Served as a reviewer in the <b>1st International Conference on Sustainable Computing & Intelligent Systems (ICSCIS 2025)</b> organized by the Research & Development Cell, Poornima University, Jaipur, Rajasthan, India on March 21 and 22, 2025.</li>  
+										<li>Served as a reviewer in the <b>International Conference on Advanced Computing Technologies (ICoACT 2025)</b> held at P.S.R. Engineering College, Sivakasi, Tamilnadu, India from March 14 to 15, 2025.</li>  
+										<li>Served as a reviewer in the <b>2nd IEEE International Conference on Artificial Intelligence and Quantum Computation-Based Sensor Applications (ICAIQSA-2024)</b> organized by the Department of Artificial Intelligence of G. H. Raisoni College of Engineering and Management, Nagpur, and technically co-sponsored by the IEEE Bombay Section from December 20 to 21, 2024.</li>  
+										<li>Served as a reviewer in the <b>7th International Conference on Recent Trends in Image Processing & Pattern Recognition (RTIP2R 2024)</b> organized by the Indian Institute of Information Technology Bhopal on December 19 and 20, 2024.</li>  
+										<li>Served as a reviewer in the <b>1st International Conference on Smart Computing and Communication for Sustainable Convergence (ISCCSC 2024)</b> organized by the Center for Research Impact and Outcome (CRIO), Chitkara University, Punjab, India on October 18, 2024.</li>  
+										<li>Served as a reviewer in the <b>1st IEEE International Conference on Smart Power Control and Renewable Energy (ICSPCRE-2024)</b> organized by the Department of Electrical Engineering, National Institute of Technology Rourkela, from July 19 to 21, 2024.</li>  
+										<li>Served as a reviewer in the <b>2nd International Conference on Computer, Electronics and Electrical Engineering and their Applications (IC2E3-2024)</b> at the National Institute of Technology Uttarakhand, India from June 6 to 7, 2024.</li>  
+										<li>Served as a reviewer in the <b>11th IEEE Humanitarian Technology Conference (HTC 2023)</b> organized by the IEEE Gujarat Section at Marwadi University, Rajkot, India, from October 16 to 18, 2023.</li>  
+										<li>Served as a reviewer in the <b>2023 IEEE 2nd International Conference on Industrial Electronics: Developments & Applications (ICIDeA 2023)</b> organized by the Electrical Engineering Department, NIT Manipur, in association with the IEEE Student Branch, NIT Manipur on September 29 and 30, 2023.</li>  
+										<li>Served as a reviewer for the <b>International Journal of Power Electronics and Drive Systems (IJPEDS)</b> in July 2023.</li>  
+										<li>Served as a reviewer for the <b>International Journal of Applied Power Engineering (IJAPE)</b> in May 2023.</li>  
+										<li>Served as a reviewer in the <b>Second IEEE International Conference on Smart Technologies and Systems for Next Generation Computing (ICSTSN 2023)</b> at IFET College of Engineering, India, on April 21 and 22, 2023.</li>  
+									</ol>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">FDP/STTP/STC</h3></div>
+                    <ol class="research-list">  
+										<li>Attended a faculty development program on <b>"AR/VR/XR"</b> organized by the Faculty of Computer Applications, Marwadi University, Rajkot, in association with the Experiential Technologies Innovation Center (XTIC), IIT Madras on July 21, 2025.</li>  
+										<li>Attended a faculty development program on <b>"Leveraging Advanced Power Conversion Systems and AI for EV"</b> jointly organized by the Electronics and ICT Academy, NIT Patna, and NIT Tiruchirappalli from May 8 to 21, 2025.</li>  
+										<li>Attended a five-day online faculty development program on <b>"Advancing Outcome-Based Education in Curriculum Design, Pedagogy, and Assessment Strategies"</b> organized by VIT-AP School of Law, VIT-AP University from May 13 to 17, 2025.</li>  
+										<li>Attended a one-week online faculty development program on <b>"Design of EV, PV & Wind Power Plants and Applications of IoT: Hands-on Practice"</b> organized by the Department of EEE, Sasi Institute of Technology and Engineering, Tadepalligudem, A.P., India from April 4 to May 3, 2025.</li>  
+										<li>Completed the <b>"Innovation Ambassador (IA) (Reskilling) training program"</b> in online mode by the MoE's Innovation Cell & AICTE during the ICC calendar year 2024-25 on August 31, 2024.</li>  
+										<li>Attended a one-week international online FDP on <b>"Emerging Trends in Electronics Circuit Design, Signal Processing, and Communication"</b> organized by the Department of Electronics and Communication Engineering, Koneru Lakshmaiah Education Foundation, Hyderabad, Telangana from July 1 to 6, 2024.</li>  
+										<li>Participated in a one-week online short-term training program on <b>"Electrical Engineering Solutions for Smart Cities: Integration, Innovation, and Impact"</b> organized by the Department of Electrical Engineering, St. Francis Institute of Technology, Mumbai, India from June 24 to 29, 2024.</li>  
+										<li>Completed a five-day short-term training program on <b>"Application of AI and ML in Electrical and Electronics Engineering"</b> organized by the Department of Electrical Engineering, BBIT, Kolkata, in association with The Institution of Engineers (India), WBSC from April 1 to 9, 2024.</li>  
+										<li>Completed a five-day Faculty Development Program on <b>"Advancement in Electrical and Electronics Science - Yesterday, Today and Tomorrow"</b> organized by the Department of Electrical and Electronics Engineering, Sri Venkateswara College of Engineering and Technology, Chittoor, Andhra Pradesh from March 26 to 30, 2024.</li>  
+										<li>Completed the <b>"Innovation Ambassador (IA) (Advanced Level) training program"</b> in online mode by the MoE's Innovation Cell & AICTE during the ICC calendar year 2022-23 on January 27, 2024.</li>  
+										<li>Completed the <b>"Innovation Ambassador (IA) (Foundation Level) training program"</b> in online mode by the MoE's Innovation Cell & AICTE during the ICC calendar year 2022-23 on January 27, 2024.</li>  
+										<li>Participated in a five-day Short-Term Training Program on <b>"Lab-Market 1.0 Recent Trends in Engineering"</b> organized by the Department of Electrical Engineering, Poornima College of Engineering, Jaipur from December 9 to 13, 2023.</li>  
+										<li>Participated in a five-day faculty development program on <b>"Future Trends and Advances in Electrical Engineering"</b> organized by the Department of Electrical and Electronics Engineering, Aditya Engineering College, in association with IEEE from July 5 to 7, 2023.</li>  
+										<li>Participated in a one-week faculty development program on <b>"Artificial Intelligence and Its Applications"</b> organized by Chalapathi Institute of Technology, Guntur from July 3 to 8, 2023.</li>  
+										<li>Participated in a one-week online Short-Term Training Program on <b>"Electrical CAD Design"</b> organized by the Department of Electrical & Electronic Engineering, Bapatla Engineering College, Bapatla from June 26 to July 1, 2023.</li>  
+										<li>Participated in a one-week short-term training program on <b>"Research Analysis and Evaluation Techniques"</b> organized by the Department of Computer Engineering, Marwadi University from December 26 to 30, 2022.</li>  
+										<li>Participated in a three-day faculty development program on <b>"Recent Trends in Electric Vehicles"</b> organized by Sri Balaji College of Engineering and Technology, Jaipur from August 1 to 8, 2022.</li>  
+										<li>Participated in a one-day online faculty development program on <b>"Urban Trends: Smart & Sustainable Cities by 2030, its needs and requirements"</b> organized by Sri Balaji College of Engineering and Technology, Jaipur on August 5, 2022.</li>  
+										<li>Participated in a one-week online faculty development program on <b>"Smart Grids and Microgrids in the Indian Context"</b> organized by the Department of Electrical and Electronics Engineering, Mahatma Gandhi Institute of Technology, Hyderabad from June 20 to 24, 2022.</li>  
+										<li>Participated in a one-week Short-Term Training Program on <b>"Power Quality Issues and Solutions for Grid-Connected Electric Vehicles"</b> organized by the National Institute of Technical Teachers Training and Research, Chandigarh from March 14 to 19, 2022.</li>  
+										<li>Completed the program on <b>"Internet of Things (IoT) & Artificial Intelligence (AI)"</b> organized by FICE Education Private Limited under the Intel College Excellence Program from March 21 to 25, 2022.</li>  
+										<li>Completed an orientation/refresher program on <b>"Power Electronics for Renewable Energy Systems"</b> organized by Sarvajanik College of Engineering & Technology, Surat from December 12, 2021, to January 1, 2022.</li>  
+										<li>Participated in a one-week online Short-Term Training Program on <b>"Tomorrow's Electrical Power Grid: Challenges, Trends and Upcoming Paradigms"</b> organized by the Department of Electrical Engineering, St. Francis Institute of Technology, and co-sponsored by IEEE Bombay Section from January 3 to 7, 2022.</li>  
+										<li>Completed the AICTE Training and Learning (ATAL) Academy's FDP on <b>"Microgrid: A Path to Sustainability"</b> at Sarvajanik College of Engineering & Technology from December 20 to 24, 2021.</li>  
+										<li>Completed the AICTE Training and Learning (ATAL) Academy Online Elementary FDP on <b>"Smart Energy Systems"</b> organized by the Institute of Infrastructure, Technology, Research and Management, Ahmedabad from October 4 to 8, 2021.</li>  
+										<li>Participated in a 10-hour faculty development program on <b>"Circuit Design using AutoCAD Electrical"</b> conducted by ICT Academy from August 16 to 20, 2021.</li>  
+										<li>Participated in a two-week Short-Term Training Program on <b>"Emerging Technologies in Electric Vehicles"</b> organized by the Department of Electrical & Electronic Engineering, Bapatla Engineering College, Bapatla from August 2 to 14, 2021.</li>  
+										<li>Completed the AICTE Training and Learning (ATAL) Academy's FDP on <b>"Microgrids an Opportunity: Electric Vehicles and Renewable Energy Resources"</b> at Dayalbagh Educational Institute, Agra from July 5 to 9, 2021.</li>  
+										<li>Completed the <b>"AICTE-ISTE" program on "Industrial Application of MATLAB"</b> organized by Ojaswini Institute of Management and Technology, Damoh, Madhya Pradesh from April 8 to 14, 2021.</li>  
+										<li>Completed the AICTE Training and Learning (ATAL) Academy Online FDP on <b>"Energy Engineering"</b> organized by the National Institute of Technology Delhi from December 25 to 29, 2020.</li>  
+										<li>Participated in a one-week faculty development program on <b>"Design and Development of Control Strategies for Electrical Power Applications - An Industrial Perspective"</b> organized by the Department of Electrical and Electronics Engineering, Prasad V. Potluri Siddhartha Institute of Technology, Andhra Pradesh from December 7 to 12, 2020.</li>  
+										<li>Participated in a one-week faculty development program on <b>"Application of Machine Learning & Data Science in Engineering Technology"</b> organized by the Regional College for Education, Research & Technology, Jaipur, Rajasthan Technical University, Kota from December 15 to 19, 2020.</li>  
+										<li>Participated in a six-day online Short-Term Training Program on <b>"Digital Signal Controllers for Control of Electronic Converters and Applications"</b> organized by the Electrical Engineering Department, Sarvajanik College of Engineering & Technology, Surat from December 14 to 19, 2020.</li>  
+										<li>Participated in a one-week online Short-Term Training Program on <b>"Battery Management and Control Technology in Electric Vehicles"</b> organized by the Department of Electrical & Electronic Engineering, Hirasugar Institute of Technology, Nidasoshi from November 23 to 28, 2020.</li>  
+										<li>Completed the AICTE Training and Learning (ATAL) Academy Online FDP on <b>"Sustainability Engineering"</b> organized by Vellore Institute of Technology from December 14 to 18, 2020.</li>  
+										<li>Participated in a one-week online Short-Term Training Program on <b>"Transition in Power Electronics towards Sustainable, Smart, and Flexible Microgrids"</b> organized by NIT Delhi from October 19 to 23, 2020.</li>  
+										<li>Participated in a three-day faculty development program on <b>"Electric Vehicles"</b> organized by Sri Balaji College of Engineering and Technology, Jaipur from September 4 to 6, 2020.</li>  
+										<li>Participated in a faculty development program on <b>"Emerging Trends in Power Electronics and Power Systems"</b> organized by the Department of Electrical Engineering, O. P. Jindal University, Raigarh, Chhattisgarh from August 24 to 29, 2020.</li>  
+										<li>Participated in a one-week faculty development program on <b>"Recent Research Trends in Electrical Engineering"</b> organized by the Electrical Engineering Department, Gautam Buddha University, Greater Noida from July 14 to 18, 2020.</li>  
+										<li>Completed a two-week online faculty development program on <b>"Advanced Optimization Techniques and Hands-on with MATLAB/SCILAB"</b> jointly organized by the Electronics and ICT Academies of MNIT Jaipur and MNIT Patna from July 13 to 24, 2020.</li>  
+										<li>Completed a one-week training program on <b>"Hardware-in-the-Loop Simulation Technology in the Electrical Engineering Domain"</b> organized by Quarbz Info Systems from May 4 to 9, 2020.</li>  
+										<li>Participated in a one-week Short-Term Training Program on <b>"Future of Electric Mobility in India"</b> organized by the Electrical Engineering Department, Marwadi University, and sponsored by the Gujarat Council of Science and Technology from June 17 to 21, 2019.</li>  
+										<li>Participated in the <b>GIAN Course on "Permanent Magnet Synchronous Motor and Brushless DC Motor Drive Systems"</b> organized by NIT Hamirpur on December 18 and 19, 2017.</li>  
+										<li>Completed <b>Faculty Development Program Level 3</b> organized by Marwadi University from June 30 to July 1, 2017.</li>  
+										<li>Completed <b>Faculty Development Program Level 2</b> organized by Marwadi University on December 21 and 22, 2016.</li>  
+										<li>Completed <b>Faculty Development Program Level 1</b> organized by Marwadi University on August 16 and 17, 2016.</li>  
+									</ol>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">Workshop</h3></div>
+                    <p>Dummy content for Workshops. You can replace this with your actual list of attended workshops.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">Seminar/Webinar</h3></div>
+                    <p>Dummy content for Seminars/Webinars. You can replace this with your actual list of attended events.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">Expert Talk</h3></div>
+                    <p>Dummy content for Expert Talks. You can replace this with your actual list of delivered talks.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">Industrial Training</h3></div>
+                    <p>Dummy content for Industrial Training. You can replace this with your actual list of completed trainings.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">MOOCs</h3></div>
+                    <ol class="research-list">  
+										<li>Completed an online course on "<b>Transducer for Instrumentation</b>" with a Gold Badge hosted by IIT Madras and offered through Swayam NPTEL from January to April 2025.</li>  
+										<li>Completed an online course on "<b>Effective Engineering Teaching in Practice</b>" with a Silver Badge hosted by IIT Madras and offered through Swayam NPTEL from January to February 2025.</li>  
+										<li>Completed an online credit course on "<b>Python for Data Science</b>" hosted by IIT Madras and offered through Swayam NPTEL from January to February 2024.</li>  
+										<li>Completed an online credit course on "<b>Digital Circuits</b>" hosted by IIT Kharagpur and offered through Swayam NPTEL from July to October 2023.</li>  
+										<li>Completed an online non-credit course on "<b>What is Data Science?</b>" authorized by IBM and offered through Coursera on July 19, 2023.</li>  
+										<li>Completed an online non-credit course on "<b>Gender Analytics for Innovation</b>" authorized by the University of Toronto and offered through Coursera on July 12, 2023.</li>  
+										<li>Completed an online non-credit course on "<b>Essentials of Entrepreneurship: Thinking & Action</b>" authorized by the University of California, Irvine, and offered through Coursera on June 28, 2023.</li>  
+										<li>Completed an online non-credit Specialization on "<b>MATLAB Programming for Engineers and Scientists</b>" authorized by Vanderbilt University and offered through Coursera on January 01, 2023.</li>  
+										<li>Completed an online non-credit course on "<b>Mastering Programming with MATLAB</b>" authorized by Vanderbilt University and offered through Coursera on January 01, 2023.</li>  
+										<li>Completed an online non-credit course on "<b>Introduction to Data, Signal, and Image Analysis with MATLAB</b>" authorized by Vanderbilt University and offered through Coursera on July 23, 2022.</li>  
+										<li>Completed an online non-credit course on "<b>Electric Vehicles and Mobility</b>" authorized by École des Ponts ParisTech and offered through Coursera on July 16, 2022.</li>  
+										<li>Completed an online non-credit Specialization on "<b>Power Electronics</b>" authorized by the University of Colorado Boulder and offered through Coursera on December 15, 2021.</li>  
+										<li>Completed an online non-credit course on "<b>How to Write and Publish a Scientific Paper (Project-Centered Course)</b>" authorized by École Polytechnique and offered through Coursera on December 15, 2021.</li>  
+										<li>Completed an online non-credit course on "<b>Communication in the 21st Century Workplace</b>" authorized by the University of California, Irvine, and offered through Coursera on October 22, 2021.</li>  
+										<li>Completed an online non-credit course on "<b>Linear Circuits 2: AC Analysis</b>" authorized by Georgia Institute of Technology and offered through Coursera on October 09, 2021.</li>  
+										<li>Completed an online non-credit course on "<b>Magnetics for Power Electronic Converters</b>" authorized by the University of Colorado Boulder and offered through Coursera on May 15, 2021.</li>  
+										<li>Completed an online course on "<b>Renewable Energy Technologies</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 02, 2021.</li>  
+										<li>Completed an online course on "<b>Power Quality Challenges and Solutions for Microgrids</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>Optimization Strategies and Energy Management Systems</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>Innovation and Diversity in Engineering</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>Maritime Microgrids – A Sustainable Solution for Green Sea Transportation</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>Hydrogen as an Energy Vector</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>Green professionalization and ethics</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>An Introduction to DC Microgrids for Energy Control and Management</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>An Introduction to AC Microgrids for Energy Control and Management</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>A holistic approach for Energy Transition: territory, networks and sustainability</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with ASSET Project on January 01, 2021.</li>  
+										<li>Completed an online course on "<b>21st Century Learning</b>" offered by EMMA (European Multiple MOOC Aggregator) in collaboration with Federico II and Bath Spa Universities on January 01, 2021.</li>  
+										<li>Completed an online non-credit course on "<b>Introduction to Programming with MATLAB</b>" authorized by Vanderbilt University and offered through Coursera on December 21, 2020.</li>  
+										<li>Completed an online non-credit Specialization on "<b>An Introduction to Programming the Internet of Things (IOT)</b>" authorized by the University of California, Irvine, and offered through Coursera on August 17, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Interfacing with the Raspberry Pi</b>" authorized by the University of California, Irvine, and offered through Coursera on August 17, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>The Raspberry Pi Platform and Python Programming for the Raspberry Pi</b>" authorized by the University of California, Irvine, and offered through Coursera on July 31, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Programming for the Internet of Things Project</b>" authorized by the University of California, Irvine, and offered through Coursera on July 08, 2020.</li>  
+										<li>Completed an online course on "<b>Digital Control of Grid-Tied Converters</b>" developed by the Federal University of Santa Maria and offered through HIL Academy on July 01, 2020.</li>  
+										<li>Completed an online module on "<b>Design and Test of Outer Loops</b>" as a part of the "Digital Control of Grid-Tied Converters Course" developed by the Federal University of Santa Maria and offered through HIL Academy on July 01, 2020.</li>  
+										<li>Completed an online module on "<b>PWM Modulators</b>" as a part of the "Digital Control of Grid-Tied Converters Course" developed by the Federal University of Santa Maria and offered through HIL Academy on June 30, 2020.</li>  
+										<li>Completed an online module on "<b>Current Controllers</b>" as a part of the "Digital Control of Grid-Tied Converters Course" developed by the Federal University of Santa Maria and offered through HIL Academy on June 30, 2020.</li>  
+										<li>Completed an online module on "<b>Synchronization Algorithm</b>" as a part of the "Digital Control of Grid-Tied Converters Course" developed by the Federal University of Santa Maria and offered through HIL Academy on June 27, 2020.</li>  
+										<li>Completed an online course on "<b>HIL Specialist Certification</b>" developed by Typhoon HIL and offered through HIL Academy on June 21, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Introduction to Power Electronics</b>" authorized by the University of Colorado Boulder and offered through Coursera on June 17, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Programming for Everybody (Getting Started with Python)</b>" authorized by the University of Michigan and offered through Coursera on June 06, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Interfacing with the Arduino</b>" authorized by the University of California, Irvine, and offered through Coursera on June 05, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Introduction to the Internet of Things and Embedded Systems</b>" authorized by the University of California, Irvine, and offered through Coursera on June 03, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Converter Control</b>" authorized by the University of Colorado Boulder and offered through Coursera on May 28, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Advanced Converter Control Techniques</b>" authorized by the University of Colorado Boulder and offered through Coursera on May 23, 2020.</li>  
+										<li>Completed an online course on "<b>HIL Specialist Certification</b>" authorized by HIL Academy on May 21, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Renewable Energy and Green Building Entrepreneurship</b>" authorized by Duke University and offered through Coursera on May 10, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>The Arduino Platform and C Programming</b>" authorized by the University of California, Irvine, and offered through Coursera on May 06, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Converter Circuits</b>" authorized by the University of Colorado Boulder and offered through Coursera on May 06, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Linear Circuits 1: DC Analysis</b>" authorized by Georgia Institute of Technology and offered through Coursera on May 04, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Electric Industry Operations and Markets</b>" authorized by Duke University and offered through Coursera on April 28, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Building Arduino robots and devices</b>" authorized by the Moscow Institute of Physics and Technology and offered through Coursera on April 24, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Introduction to battery-management systems</b>" authorized by the University of Colorado System and offered through Coursera on April 21, 2020.</li>  
+										<li>Completed an online non-credit Specialization on "<b>Energy Production, Distribution & Safety</b>" authorized by the University of Buffalo and offered through Coursera on April 20, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Energy: The Enterprise</b>" authorized by the University at Buffalo and The State University of New York and offered through Coursera on April 20, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Natural Gas</b>" authorized by the University at Buffalo and The State University of New York and offered through Coursera on April 19, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Safety in the Utility Industry</b>" authorized by the University at Buffalo and The State University of New York and offered through Coursera on April 19, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Electric Power Systems</b>" authorized by the University at Buffalo and The State University of New York and offered through Coursera on April 19, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Introduction to solar cells</b>" authorized by the Technical University of Denmark (DTU) and offered through Coursera on April 19, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Solar Energy Basics</b>" authorized by The State University of New York and offered through Coursera on April 05, 2020.</li>  
+										<li>Completed an online non-credit Specialization on "<b>Embedding Sensors and Motors</b>" authorized by the University of Colorado Boulder and offered through Coursera on January 27, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Sensor Manufacturing and Process Control</b>" authorized by the University of Colorado Boulder and offered through Coursera on January 27, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Pressure, Force, Motion, and Humidity Sensors</b>" authorized by the University of Colorado Boulder and offered through Coursera on January 24, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Sensors and Sensor Circuit Design</b>" authorized by the University of Colorado Boulder and offered through Coursera on January 22, 2020.</li>  
+										<li>Completed an online non-credit course on "<b>Motors and Motor Control Circuits</b>" authorized by the University of Colorado Boulder and offered through Coursera on January 15, 2020.</li>  
+										<li>Completed an online course on "<b>Installation and Maintenance of Solar Photovoltaic System</b>" authorized by Udemy on December 11, 2019.</li>  
+										<li>Completed an online non-credit course on "<b>Raspberry Pi Workshop</b>" offered through Udemy on May 12, 2018.</li>  
+										<li>Completed an online non-credit course on "<b>Basic of Object Oriented Programming with C</b>" offered through Udemy on May 12, 2018.</li>  
+										<li>Completed an online non-credit course on "<b>HTML and CSS Foundations</b>" offered through Udemy on April 30, 2018.</li>  
+										<li>Completed an online non-credit course on "<b>Maya Modelling</b>" offered through Udemy on April 30, 2018.</li>  
+										<li>Completed an online credit course on "<b>Basic Electronics</b>" hosted by IIT Bombay and offered through Swayam NPTEL from January to April 2018.</li>  
+										<li>Completed an online non-credit course on "<b>Wind Energy</b>" authorized by the Technical University of Denmark (DTU) and offered through Coursera on February 25, 2018.</li>  
+										<li>Completed an online non-credit course on "<b>MOOC LIFE CYCLE</b>" authorized under the Royal Academy of Engineering (UK) and Thapar University sponsored Research Project and offered through the Future Learn platform on December 01, 2017.</li>  
+									</ol>
+                </div>
+                <div class="content-card">
+                    <div class="card-title-wrapper"><h3 class="card-title-primary">Membership of Professional Society</h3></div>
+                    <p>Dummy content for Memberships. You can replace this with your actual list of professional memberships.</p>
+                </div>
                 </div>
             </div>
         </section>
@@ -1121,7 +1522,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; <span id="current-year"></span> Prof. Uvesh Sipai. All rights reserved.</p>
+            <p>© 2026 Prof. Uvesh Sipai | Updated: 25 Feb 2026</p>
         </div>
     </footer>
 
@@ -1143,18 +1544,25 @@
             // Apply the white filter initially
             logoImg.classList.add('logo-white');
 
-            window.addEventListener('scroll', () => {
+            
+            const bodyEl = document.body;
+
+            const updateNavbarState = () => {
                 const heroSectionHeight = heroSection.offsetHeight;
                 if (window.scrollY > heroSectionHeight - 150) { // Trigger a bit earlier
                     navbar.classList.add('scrolled');
+                    bodyEl.classList.add('nav-scrolled');
                     logoImg.classList.remove('logo-white'); // Show original logo
                 } else {
                     navbar.classList.remove('scrolled');
+                    bodyEl.classList.remove('nav-scrolled');
                     logoImg.classList.add('logo-white'); // Show white logo
                 }
-            });
+            };
 
-            // --- Navbar Menu Toggle ---
+            window.addEventListener('scroll', updateNavbarState);
+            updateNavbarState(); // Initial call
+// --- Navbar Menu Toggle ---
             const menuToggle = document.querySelector('.menu-toggle');
             const dropdownMenu = document.querySelector('.dropdown-menu');
             const menuIcon = document.querySelector('.menu-icon');
@@ -1210,6 +1618,88 @@
             window.addEventListener('scroll', highlightNavLink);
             highlightNavLink(); // Initial call
 
+            // --- Collapsible Research Lists (View More / View Less) ---
+            const makeCollapsibleList = (listEl) => {
+                const items = Array.from(listEl.querySelectorAll(':scope > li'));
+                if (items.length <= 3) return;
+
+                // Hide items beyond top 3
+                items.slice(3).forEach(li => li.classList.add('hidden'));
+
+                // Add toggle control
+                const toggle = document.createElement('a');
+                toggle.href = 'javascript:void(0)';
+                toggle.className = 'view-toggle';
+                toggle.textContent = 'View More';
+
+                let expanded = false;
+                const setState = () => {
+                    expanded = !expanded;
+                    if (expanded) {
+                        items.slice(3).forEach(li => li.classList.remove('hidden'));
+                        toggle.textContent = 'View Less';
+                    } else {
+                        items.slice(3).forEach(li => li.classList.add('hidden'));
+                        toggle.textContent = 'View More';
+                        // Keep the list top visible and stable
+                        const top = listEl.getBoundingClientRect().top + window.scrollY - 120;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                };
+
+                toggle.addEventListener('click', setState);
+                listEl.insertAdjacentElement('afterend', toggle);
+            };
+
+            // Apply "View More / View Less" to all lists inside content cards
+            // (Exclude Education and Experience, which use a 3-line description clamp instead)
+            document.querySelectorAll('section:not(#education):not(#experience) .content-card ol, section:not(#education):not(#experience) .content-card ul').forEach(listEl => {
+                makeCollapsibleList(listEl);
+            });
+
+            // --- Education/Experience descriptions: View More/Less based on word count (50+ words) ---
+            const makeCollapsibleParagraph = (pEl, wordLimit = 50) => {
+                if (!pEl) return;
+
+                const fullText = (pEl.textContent || '').trim().replace(/\s+/g, ' ');
+                if (!fullText) return;
+
+                const words = fullText.split(' ');
+                if (words.length <= wordLimit) return; // no toggle needed
+
+                const shortText = words.slice(0, wordLimit).join(' ') + '…';
+                pEl.dataset.fullText = fullText;
+                pEl.dataset.shortText = shortText;
+                pEl.textContent = shortText;
+
+                const toggle = document.createElement('a');
+                toggle.href = 'javascript:void(0)';
+                toggle.className = 'view-toggle';
+                toggle.style.marginLeft = '0'; // paragraphs align under text
+                toggle.textContent = 'View More';
+
+                let expanded = false;
+                toggle.addEventListener('click', () => {
+                    expanded = !expanded;
+                    if (expanded) {
+                        pEl.textContent = pEl.dataset.fullText;
+                        toggle.textContent = 'View Less';
+                    } else {
+                        pEl.textContent = pEl.dataset.shortText;
+                        toggle.textContent = 'View More';
+                        const top = pEl.getBoundingClientRect().top + window.scrollY - 120;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+
+                pEl.insertAdjacentElement('afterend', toggle);
+            };
+
+            document.querySelectorAll('#experience .content-card, #education .content-card').forEach(card => {
+                const desc = Array.from(card.querySelectorAll('p')).find(p => !p.classList.contains('item-meta'));
+                makeCollapsibleParagraph(desc);
+            });
+
             // --- Animate Stat Counters ---
             const statNumbers = document.querySelectorAll('.stat-number');
             const animateStats = (entries, observer) => {
@@ -1250,35 +1740,9 @@
             scrollTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            
-            // --- Accordion for "Others" section ---
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-            
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const content = header.nextElementSibling;
-                    const currentlyActiveHeader = document.querySelector('.accordion-header.active');
-
-                    if (currentlyActiveHeader && currentlyActiveHeader !== header) {
-                        currentlyActiveHeader.classList.remove('active');
-                        currentlyActiveHeader.nextElementSibling.style.maxHeight = null;
-                    }
-                    
-                    header.classList.toggle('active');
-                    
-                    if (header.classList.contains('active')) {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                    } else {
-                        content.style.maxHeight = null;
-                    }
-                });
-            });
 
 
-            // --- Footer: Current Year ---
-            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
     </script>
 </body>
 </html>
-
